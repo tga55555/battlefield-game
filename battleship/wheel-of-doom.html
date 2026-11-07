@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WHEEL OF DOOM — TikTok LIVE</title>
+<style>
+:root{color-scheme:dark;--cyan:#65e9f2;--pink:#ff4d88;--gold:#ffd36e}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 15%,#39214e,#100c24 58%,#070915);color:#fff;font:16px system-ui,sans-serif;display:grid;place-items:center;padding:16px}
+main{width:min(100%,780px);text-align:center}.tag{color:var(--cyan);letter-spacing:4px;font-weight:900;font-size:13px}h1{font-size:clamp(32px,8vw,64px);line-height:1;margin:10px 0;color:#fff;text-shadow:0 0 18px #ff4d88aa,0 3px 0 #54204d}.sub{color:#d8cce9;margin:0 0 16px}
+.wheel-wrap{width:min(78vw,470px);aspect-ratio:1;margin:16px auto 20px;position:relative;filter:drop-shadow(0 14px 28px #0009)}
+canvas{width:100%;height:100%;display:block;border-radius:50%}
+.pointer{position:absolute;z-index:2;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-top:0;border-bottom:46px solid var(--gold);filter:drop-shadow(0 3px 4px #000)}
+.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:18%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#a6eefa 22%,#1b4d75 65%,#071b36);border:5px solid #ffe9a8;box-shadow:0 0 20px #8eefff99}
+button{font:inherit;font-weight:900;border:0;border-radius:999px;padding:14px 28px;background:linear-gradient(100deg,#ff4d88,#9b4dff);color:white;box-shadow:0 7px 0 #4a235e,0 0 24px #ff4d8866;cursor:pointer}button:disabled{opacity:.5;cursor:wait}
+.result{min-height:96px;margin:16px auto;padding:16px;border:1px solid #ff70a9aa;border-radius:18px;background:linear-gradient(140deg,#251735ee,#121b35ee);max-width:640px;box-shadow:inset 0 0 24px #ff4d8818}
+.result small{color:var(--gold);letter-spacing:3px;font-weight:800}.challenge{font-size:clamp(22px,5vw,36px);font-weight:900;margin-top:6px;color:#fff}.hint{font-size:13px;color:#c9bddb;line-height:1.5;margin-top:12px}
+.status{font-size:12px;color:#9cb5ca;margin-top:10px}
+@media(max-width:480px){body{padding:10px}.wheel-wrap{width:min(88vw,390px)}button{padding:13px 24px}}
+</style>
+</head>
+<body>
+<main>
+<div class="tag">⚠ LIVE BATTLE CHALLENGE ⚠</div>
+<h1>WHEEL OF DOOM</h1>
+<p class="sub">One spin. One challenge. No excuses.</p>
+<div class="wheel-wrap"><div class="pointer"></div><canvas id="wheel" width="900" height="900"></canvas><div class="hub"></div></div>
+<button id="spin">SPIN THE WHEEL</button>
+<section class="result" aria-live="polite"><small>YOUR DOOM IS…</small><div class="challenge" id="challenge">Waiting for the first spin…</div></section>
+<div class="hint">TikTok chat: type <b>!spin</b> to spin the wheel · <b>!help</b> for instructions<br>Streamer can also press the spin button.</div>
+<div class="status" id="status">Ready · Connect TikFinity Desktop on this PC to enable chat spins.</div>
+</main>
+<script>
+const challenges=[
+"Talk like a pirate for 2 minutes 🏴‍☠️",
+"Sing your next sentence 🎤",
+"Do your best evil villain laugh 😈",
+"No saying the word “I” for 2 minutes 🤐",
+"Give the next player a dramatic compliment 👑",
+"Do 10 seconds of your victory dance 💃",
+"Speak in a robot voice until your next turn 🤖",
+"Let chat choose your battle nickname ✍️",
+" narrate your next move like a sports commentator 🎙️",
+"Do your best movie-trailer voice 🎬",
+"Say the alphabet backwards as far as you can 🔤",
+"Play your next turn with your non-dominant hand ✋",
+"Give a 10-second acceptance speech 🏆",
+"Whisper dramatically for one full minute 🤫",
+"Make up a theme song for your opponent 🎶",
+"Do your best impression of a game show host 📺"
+];
+const colors=["#ff477e","#813cff","#2468c9","#00a9a0","#d58b18","#bb376a","#4a58a8","#087d85"];
+const canvas=document.getElementById('wheel'),ctx=canvas.getContext('2d'),spinBtn=document.getElementById('spin');
+const TAU=Math.PI*2,arc=TAU/challenges.length;
+let rotation=0,spinning=false,lastIndex=-1,chatSocket=null,lastChatSpin=0;
+function draw(){
+ const cx=450,cy=450,r=420;ctx.clearRect(0,0,900,900);
+ challenges.forEach((label,i)=>{
+  const start=rotation+i*arc-Math.PI/2,end=start+arc;
+  ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,start,end);ctx.closePath();ctx.fillStyle=colors[i%colors.length];ctx.fill();ctx.strokeStyle="#fff9";ctx.lineWidth=5;ctx.stroke();
+  ctx.save();ctx.translate(cx,cy);ctx.rotate(start+arc/2);ctx.textAlign="right";ctx.fillStyle="#fff";ctx.shadowColor="#071020";ctx.shadowBlur=5;
+  const words=label.replace(/\s+/g," ").split(" ");let lines=[],line="";
+  for(const word of words){if((line+" "+word).trim().length>19){lines.push(line);line=word}else line=(line+" "+word).trim()}if(line)lines.push(line);
+  ctx.font="bold 22px system-ui";const x=r-28;const total=lines.length*26;lines.forEach((txt,j)=>ctx.fillText(txt,x,-total/2+20+j*26));ctx.restore();
+ });
+ ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.strokeStyle="#ffe8a3";ctx.lineWidth=18;ctx.stroke();
+}
+function spin(){
+ if(spinning)return;
+ spinning=true;spinBtn.disabled=true;document.getElementById('status').textContent="The wheel is spinning…";
+ let index;do{index=Math.floor(Math.random()*challenges.length)}while(index===lastIndex);
+ lastIndex=index;
+ // Pointer is at the top; center of selected segment is aligned with it after the rotation.
+ const current=((rotation%TAU)+TAU)%TAU;
+ const target=((-(index+.5)*arc-current)%TAU+TAU)%TAU;
+ const extra=TAU*(5+Math.floor(Math.random()*3));
+ const from=rotation,to=rotation+extra+target,duration=5200,start=performance.now();
+ function frame(now){const t=Math.min(1,(now-start)/duration),ease=1-Math.pow(1-t,4);rotation=from+(to-from)*ease;draw();if(t<1)requestAnimationFrame(frame);else{rotation=((to%TAU)+TAU)%TAU;draw();document.getElementById('challenge').textContent=challenges[index];document.getElementById('status').textContent="Challenge selected · Good luck!";spinning=false;spinBtn.disabled=false}}
+ requestAnimationFrame(frame);
+}
+spinBtn.addEventListener('click',spin);draw();
+function handleChat(data){
+ const msg=String(data.comment||data.content||"").trim(),who=data.user?.nickname||data.nickname||data.user?.uniqueId||"Viewer";
+ if(/^!help$/i.test(msg)){document.getElementById('status').textContent=who+": type !spin to trigger a random challenge.";return}
+ if(/^!spin$/i.test(msg)){const now=Date.now();if(now-lastChatSpin<7000)return;lastChatSpin=now;document.getElementById('status').textContent=who+" called the Wheel of Doom!";spin()}
+}
+function connectChat(){
+ try{chatSocket=new WebSocket("ws://localhost:21213/");chatSocket.onopen=()=>document.getElementById('status').textContent="TikFinity connected · Chat can use !spin";chatSocket.onmessage=e=>{try{const m=JSON.parse(e.data);if(m.event==="chat")handleChat(m.data||{})}catch(_){}};chatSocket.onclose=()=>{document.getElementById('status').textContent="TikFinity not connected · Button still works";setTimeout(connectChat,5000)};chatSocket.onerror=()=>{document.getElementById('status').textContent="Open TikFinity Desktop on this PC · Button still works"}}catch(_){}
+}
+connectChat();
+</script>
+</body></html>
