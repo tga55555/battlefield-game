@@ -46,8 +46,12 @@ function setupPeer(host){
  peer.on('disconnected',()=>say('Multiplayer connection lost. Refresh to reconnect.'));
 }
 function wireHostConnection(co){
- co.on('open',()=>{co.send({type:'welcome',id:myId});say('Connected to host. Loading the match…');});
- co.on('data',d=>{if(d.type==='state'){players=d.players;bullets=d.bullets;grenades=d.grenades;}});
+ co.on('open',()=>{say('Connected to host. Joining the match…');});
+ co.on('data',d=>{
+  if(d.type==='welcome'){myId=d.id;say('Joined room! You are deployed.');}
+  if(d.type==='full'){say('This room is full (maximum 4 players).');co.close();}
+  if(d.type==='state'){players=d.players;bullets=d.bullets;grenades=d.grenades;}
+ });
  co.on('close',()=>say('Disconnected from host.'));
 }
 function wireGuest(co){
