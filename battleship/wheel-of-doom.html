@@ -6,15 +6,17 @@
 <title>WHEEL OF DOOM — TikTok LIVE</title>
 <style>
 :root{color-scheme:dark;--cyan:#65e9f2;--pink:#ff4d88;--gold:#ffd36e}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:transparent;color:#fff;font:16px system-ui,sans-serif;display:grid;place-items:center;padding:16px}
-main{width:min(100%,780px);text-align:center;opacity:0;visibility:hidden;transform:translateY(24px) scale(.96);transition:opacity .7s ease,transform .7s ease,visibility .7s}.active main{opacity:1;visibility:visible;transform:translateY(0) scale(1)}.tag{color:var(--cyan);letter-spacing:4px;font-weight:900;font-size:13px}h1{font-size:clamp(32px,8vw,64px);line-height:1;margin:10px 0;color:#fff;text-shadow:0 0 18px #ff4d88aa,0 3px 0 #54204d}.sub{color:#d8cce9;margin:0 0 16px}
-.wheel-wrap{width:min(78vw,470px);aspect-ratio:1;margin:16px auto 20px;position:relative;filter:drop-shadow(0 14px 28px #0009)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:transparent;color:#fff;font:16px system-ui,sans-serif;display:grid;place-items:center;padding:16px;overflow:hidden}
+main{position:relative;isolation:isolate;width:min(100%,780px);text-align:center;padding:22px 18px 18px;border:1px solid #b58cff88;border-radius:30px;background:linear-gradient(145deg,#17102de8,#24103be8 55%,#101c3be8);box-shadow:0 0 28px #a34cff44,inset 0 0 32px #ff4d8817;backdrop-filter:blur(10px);opacity:0;visibility:hidden;transform:translateY(24px) scale(.96);transition:opacity .7s ease,transform .7s ease,visibility .7s}.active main{opacity:1;visibility:visible;transform:translateY(0) scale(1)}.tag{display:inline-block;color:#fff;letter-spacing:3px;font-weight:1000;font-size:12px;padding:7px 14px;border:1px solid #ff79b8aa;border-radius:999px;background:#ff4d8822;box-shadow:0 0 18px #ff4d8844}h1{font-size:clamp(32px,8vw,64px);line-height:1;margin:12px 0;color:#fff;letter-spacing:1px;text-shadow:0 0 10px #ff4d88,0 0 28px #a34cff,0 4px 0 #54204d}.sub{color:#e6d9ff;margin:0 0 16px;font-weight:650}
+.wheel-wrap{width:min(78vw,470px);aspect-ratio:1;margin:16px auto 20px;position:relative;filter:drop-shadow(0 0 10px #ff4d88aa) drop-shadow(0 0 24px #8b4dff88) drop-shadow(0 14px 28px #0009)}
+.wheel-wrap:before{content:'';position:absolute;inset:-13px;border:5px dotted #ffe58b;border-radius:50%;box-shadow:0 0 16px #ffdb72aa;animation:orbit 18s linear infinite;pointer-events:none}
+@keyframes orbit{to{transform:rotate(360deg)}}
 canvas{width:100%;height:100%;display:block;border-radius:50%}
-.pointer{position:absolute;z-index:2;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-top:0;border-bottom:46px solid var(--gold);filter:drop-shadow(0 3px 4px #000)}
-.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:18%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#a6eefa 22%,#1b4d75 65%,#071b36);border:5px solid #ffe9a8;box-shadow:0 0 20px #8eefff99}
-button{font:inherit;font-weight:900;border:0;border-radius:999px;padding:14px 28px;background:linear-gradient(100deg,#ff4d88,#9b4dff);color:white;box-shadow:0 7px 0 #4a235e,0 0 24px #ff4d8866;cursor:pointer}button:disabled{opacity:.5;cursor:wait}
-.result{min-height:96px;margin:16px auto;padding:16px;border:1px solid #ff70a9aa;border-radius:18px;background:linear-gradient(140deg,#251735ee,#121b35ee);max-width:640px;box-shadow:inset 0 0 24px #ff4d8818}
-.result small{color:var(--gold);letter-spacing:3px;font-weight:800}.challenge{font-size:clamp(22px,5vw,36px);font-weight:900;margin-top:6px;color:#fff}.hint{font-size:13px;color:#c9bddb;line-height:1.5;margin-top:12px}
+.pointer{position:absolute;z-index:2;top:-17px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-top:0;border-bottom:54px solid #fff09a;filter:drop-shadow(0 0 8px #fff09a) drop-shadow(0 4px 4px #000)}
+.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:19%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff,#ffe28a 18%,#ff7a4d 48%,#8b164f 78%,#280b37);border:6px solid #fff1ad;box-shadow:0 0 12px #fff4a8,0 0 30px #ff5c9e;pointer-events:none}
+button{font:inherit;font-weight:1000;letter-spacing:1.5px;border:2px solid #ffd6f0;border-radius:999px;padding:15px 32px;background:linear-gradient(100deg,#ff3d83,#a23cff 55%,#3d8dff);color:white;text-shadow:0 2px 4px #47104f;box-shadow:0 6px 0 #4a235e,0 0 20px #ff4d88aa,0 0 42px #8b4dff55;cursor:pointer;animation:buttonGlow 2s ease-in-out infinite alternate;transition:transform .15s}button:hover{transform:translateY(-3px) scale(1.03)}button:disabled{opacity:.5;cursor:wait;animation:none}@keyframes buttonGlow{to{box-shadow:0 6px 0 #4a235e,0 0 30px #ff4d88dd,0 0 58px #8b4dffaa}}
+.result{min-height:96px;margin:18px auto 12px;padding:17px;border:1px solid #ff9acaaa;border-radius:20px;background:linear-gradient(140deg,#3a174bee,#171b43ee);max-width:640px;box-shadow:0 0 22px #ff4d8822,inset 0 0 24px #ff4d8828}.result small{color:#ffe58b;letter-spacing:3px;font-weight:1000}.challenge{font-size:clamp(22px,5vw,36px);font-weight:1000;margin-top:7px;color:#fff;text-shadow:0 0 16px #ff4d88aa}.result.pop{animation:resultPop .65s cubic-bezier(.2,1.5,.4,1)}@keyframes resultPop{0%{transform:scale(.85);filter:brightness(1)}55%{transform:scale(1.06);filter:brightness(1.8)}100%{transform:scale(1);filter:brightness(1)}}
+.result small{color:var(--gold);letter-spacing:3px;font-weight:800}.challenge{font-size:clamp(22px,5vw,36px);font-weight:900;margin-top:6px;color:#fff}.hint{font-size:13px;color:#d9c9f5;line-height:1.6;margin-top:14px}.hint b{color:#ffe58b}.status{font-size:12px;color:#a9dff2;margin-top:10px;font-weight:700}.confetti{position:fixed;z-index:10;top:-20px;width:9px;height:15px;border-radius:2px;pointer-events:none;animation:confettiFall 2.3s ease-in forwards}@keyframes confettiFall{to{transform:translate(var(--drift),105vh) rotate(900deg);opacity:0}}
 .status{font-size:12px;color:#9cb5ca;margin-top:10px}
 @media(max-width:480px){body{padding:10px}.wheel-wrap{width:min(88vw,390px)}button{padding:13px 24px}}
 </style>
@@ -54,17 +56,18 @@ const canvas=document.getElementById('wheel'),ctx=canvas.getContext('2d'),spinBt
 const TAU=Math.PI*2,arc=TAU/challenges.length;
 let rotation=0,spinning=false,lastIndex=-1,chatSocket=null,lastChatSpin=0,battleActive=false,battleDuration=300,battleStartAt=0,popupShown=false,autoSpun=false,lastBattleKey="";
 function draw(){
- const cx=450,cy=450,r=420;ctx.clearRect(0,0,900,900);
+ const cx=450,cy=450,r=420;ctx.clearRect(0,0,900,900);ctx.save();ctx.shadowColor='#ff4d88';ctx.shadowBlur=22;
  challenges.forEach((label,i)=>{
   const start=rotation+i*arc-Math.PI/2,end=start+arc;
-  ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,start,end);ctx.closePath();ctx.fillStyle=colors[i%colors.length];ctx.fill();ctx.strokeStyle="#fff9";ctx.lineWidth=5;ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,start,end);ctx.closePath();const grad=ctx.createRadialGradient(cx-80,cy-90,20,cx,cy,r);grad.addColorStop(0,colors[i%colors.length]);grad.addColorStop(1,i%2?'#20123f':'#101c48');ctx.fillStyle=grad;ctx.fill();ctx.strokeStyle='#fff9';ctx.lineWidth=5;ctx.stroke();
   ctx.save();ctx.translate(cx,cy);ctx.rotate(start+arc/2);ctx.textAlign="right";ctx.fillStyle="#fff";ctx.shadowColor="#071020";ctx.shadowBlur=5;
   const words=label.replace(/\s+/g," ").split(" ");let lines=[],line="";
   for(const word of words){if((line+" "+word).trim().length>19){lines.push(line);line=word}else line=(line+" "+word).trim()}if(line)lines.push(line);
-  ctx.font="bold 22px system-ui";const x=r-28;const total=lines.length*26;lines.forEach((txt,j)=>ctx.fillText(txt,x,-total/2+20+j*26));ctx.restore();
+  ctx.font="1000 22px system-ui";const x=r-32;const total=lines.length*26;lines.forEach((txt,j)=>ctx.fillText(txt,x,-total/2+20+j*26));ctx.restore();
  });
- ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.strokeStyle="#ffe8a3";ctx.lineWidth=18;ctx.stroke();
+ ctx.restore();ctx.beginPath();ctx.arc(cx,cy,r-7,0,TAU);ctx.strokeStyle='#fff1a8';ctx.lineWidth=13;ctx.shadowColor='#ffde7a';ctx.shadowBlur=18;ctx.stroke();ctx.shadowBlur=0;ctx.beginPath();ctx.arc(cx,cy,105,0,TAU);ctx.strokeStyle='#fff7d2';ctx.lineWidth=7;ctx.stroke();
 }
+function confettiBurst(){const palette=['#ff4d88','#ffe58b','#65e9f2','#a76bff','#70ffbd'];for(let i=0;i<65;i++){const bit=document.createElement('i');bit.className='confetti';bit.style.left=(Math.random()*100)+'vw';bit.style.background=palette[i%palette.length];bit.style.setProperty('--drift',(Math.random()*240-120)+'px');bit.style.animationDelay=(Math.random()*.35)+'s';document.body.appendChild(bit);setTimeout(()=>bit.remove(),2800)}}
 function spin(){
  if(spinning)return;
  spinning=true;spinBtn.disabled=true;document.getElementById('status').textContent="The wheel is spinning…";
@@ -75,7 +78,7 @@ function spin(){
  const target=((-(index+.5)*arc-current)%TAU+TAU)%TAU;
  const extra=TAU*(5+Math.floor(Math.random()*3));
  const from=rotation,to=rotation+extra+target,duration=5200,start=performance.now();
- function frame(now){const t=Math.min(1,(now-start)/duration),ease=1-Math.pow(1-t,4);rotation=from+(to-from)*ease;draw();if(t<1)requestAnimationFrame(frame);else{rotation=((to%TAU)+TAU)%TAU;draw();document.getElementById('challenge').textContent=challenges[index];document.getElementById('status').textContent="Challenge selected · Good luck!";spinning=false;spinBtn.disabled=false}}
+ function frame(now){const t=Math.min(1,(now-start)/duration),ease=1-Math.pow(1-t,4);rotation=from+(to-from)*ease;draw();if(t<1)requestAnimationFrame(frame);else{rotation=((to%TAU)+TAU)%TAU;draw();document.getElementById('challenge').textContent=challenges[index];const result=document.querySelector('.result');result.classList.remove('pop');void result.offsetWidth;result.classList.add('pop');confettiBurst();document.getElementById('status').textContent="🎉 Challenge selected · Good luck!";spinning=false;spinBtn.disabled=false}}
  requestAnimationFrame(frame);
 }
 spinBtn.addEventListener('click',spin);draw();
