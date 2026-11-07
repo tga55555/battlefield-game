@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Battlefield: Ship Assault</title>
+<style>
+:root{color-scheme:dark;--cyan:#55dff4;--panel:#101d2a;--line:#29445b}*{box-sizing:border-box}body{margin:0;background:#07111c;color:#edf7ff;font:15px system-ui,Segoe UI,sans-serif;min-height:100vh}header{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;background:#0b1825;border-bottom:1px solid var(--line)}h1{font-size:clamp(18px,4vw,26px);margin:0;letter-spacing:.08em}h1 span{color:var(--cyan)}.tag{font-size:11px;color:#91a9bb;letter-spacing:.14em}.wrap{max-width:1100px;margin:auto;padding:14px}.lobby{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--panel);border:1px solid var(--line);padding:12px;border-radius:12px;margin-bottom:12px}.lobby input{background:#07111c;border:1px solid #35536a;color:white;border-radius:8px;padding:10px;min-width:130px;flex:1}button{border:0;border-radius:8px;background:#087f9c;color:white;padding:11px 14px;font-weight:750;cursor:pointer}button.secondary{background:#26394b}button:disabled{opacity:.45}.status{font-size:12px;color:#a8bdcc;flex-basis:100%}.gamebox{position:relative;border:1px solid #29445b;border-radius:12px;overflow:hidden;background:#07111c}canvas{display:block;width:100%;height:auto;touch-action:none}.hud{position:absolute;top:10px;left:12px;right:12px;display:flex;justify-content:space-between;pointer-events:none;text-shadow:0 2px 5px #000;font-weight:700;font-size:13px}.hint{color:#a9c0d0;font-size:12px;line-height:1.5;margin:10px 2px}.mobile{display:none;justify-content:space-between;gap:12px;margin-top:10px}.pad{display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,45px);gap:5px}.pad button,.actions button{padding:5px;background:#20394e;touch-action:none}.pad button:nth-child(1){grid-column:2}.pad button:nth-child(2){grid-column:1;grid-row:2}.pad button:nth-child(3){grid-column:2;grid-row:2}.pad button:nth-child(4){grid-column:3;grid-row:2}.actions{display:flex;gap:8px;align-items:center}.actions button{min-width:65px;min-height:58px}.actions .fire{background:#a43b2e}.actions .grenade{background:#92702a}@media(max-width:700px){.mobile{display:flex}.wrap{padding:9px}.lobby{gap:6px}.lobby button{flex:1}.hud{font-size:11px}}
+</style>
+</head>
+<body>
+<header><div><div class="tag">ONLINE MULTIPLAYER • 2–4 OPERATORS</div><h1>BATTLEFIELD <span> / SHIP ASSAULT</span></h1></div><div class="tag">ALPHA 0.1</div></header>
+<main class="wrap">
+<section class="lobby">
+<button id="host">Create room</button><input id="room" placeholder="Host room code"><button id="join" class="secondary">Join room</button><button id="copy" class="secondary" disabled>Copy invite</button>
+<div class="status" id="status">Create a room or enter a friend's room code. Share the code so up to 3 friends can join.</div>
+</section>
+<div class="gamebox"><canvas id="game" width="960" height="600"></canvas><div class="hud"><span id="players">PLAYERS 0/4</span><span id="weapon">RIFLE • 30 AMMO</span><span id="health">HEALTH 100</span></div></div>
+<div class="mobile">
+<div class="pad"><button data-move="up">▲</button><button data-move="left">◀</button><button data-move="down">▼</button><button data-move="right">▶</button></div>
+<div class="actions"><button class="grenade" id="grenade">GRENADE</button><button class="fire" id="fire">FIRE</button></div>
+</div>
+<p class="hint">Desktop: WASD / arrows to move • Mouse to aim • Click to fire • Space to throw a grenade. Mobile: use the direction pad, FIRE and GRENADE. This is a browser-based arcade game; no real weapons or real-world tactics.</p>
+</main>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+(()=>{
+const c=document.getElementById('game'),ctx=c.getContext('2d'),statusEl=document.getElementById('status'),roomEl=document.getElementById('room');
+const W=c.width,H=c.height,colors=['#55dff4','#ffbd59','#c28aff','#7ee29b'];
+let peer=null,isHost=false,hostConn=null,connections=[],myId=null,roomCode='',players={},bullets=[],grenades=[],keys={},aim={x:700,y:300},fire=false,throwing=false,lastShot=0,lastGrenade=0,lastBroadcast=0,worldTime=0;
+const ship={x:55,y:55,w:850,h:490};
+const say=t=>statusEl.textContent=t;
+const rand=(a,b)=>Math.random()*(b-a)+a;
+function addPlayer(id,name){if(Object.keys(players).length>=4&&!players[id])return;players[id]={id,name:name||'Operator',x:rand(180,780),y:rand(180,420),angle:0,hp:100,color:colors[Object.keys(players).length%4],alive:true,score:0};}
+function packet(data){if(isHost){connections.forEach(co=>{if(co.open)co.send(data)});}else if(hostConn&&hostConn.open)hostConn.send(data);}
+function setupPeer(host){
+ if(!window.Peer){say('Could not load multiplayer service. Refresh and try again.');return;}
+ isHost=host;document.getElementById('host').disabled=true;document.getElementById('join').disabled=true;
+ peer=new Peer(undefined,{debug:1});
+ peer.on('open',id=>{
+  myId=id;
+  if(host){roomCode=id;roomEl.value=id;addPlayer(id,'Captain');say('Room ready! Share this room code with up to 3 friends.');}
+  else {hostConn=peer.connect(roomEl.value.trim(),{reliable:true});wireHostConnection(hostConn);}
+ });
+ peer.on('connection',co=>{if(!isHost)return;wireGuest(co);});
+ peer.on('error',e=>say('Connection error: '+e.type+'. Check the room code and try again.'));
+ peer.on('disconnected',()=>say('Multiplayer connection lost. Refresh to reconnect.'));
+}
+function wireHostConnection(co){
+ co.on('open',()=>{co.send({type:'welcome',id:myId});say('Connected to host. Loading the match…');});
+ co.on('data',d=>{if(d.type==='state'){players=d.players;bullets=d.bullets;grenades=d.grenades;}});
+ co.on('close',()=>say('Disconnected from host.'));
+}
+function wireGuest(co){
+ co.on('open',()=>{if(Object.keys(players).length>=4){co.send({type:'full'});co.close();return;}addPlayer(co.peer,'Operator '+(Object.keys(players).length+1));connections.push(co);co.send({type:'welcome',id:co.peer});});
+ co.on('data',d=>{if(d.type==='input'&&players[co.peer]){const p=players[co.peer];p.input=d.input||{};p.angle=d.angle||0;if(d.fire)shoot(p);if(d.grenade)throwGrenade(p);}});
+ co.on('close',()=>{delete players[co.peer];connections=connections.filter(x=>x!==co);});
+}
+document.getElementById('host').onclick=()=>setupPeer(true);
+document.getElementById('join').onclick=()=>{if(!roomEl.value.trim()){say('Enter the host room code first.');return;}setupPeer(false);};
+document.getElementById('copy').onclick=()=>{navigator.clipboard?.writeText(roomCode).then(()=>say('Room code copied. Send it to your friends!')).catch(()=>say('Copy this code: '+roomCode));};
+function shoot(p){const now=Date.now();if(now-(p.lastShot||0)<260||!p.alive)return;p.lastShot=now;const a=p.angle||0;bullets.push({x:p.x+Math.cos(a)*20,y:p.y+Math.sin(a)*20,vx:Math.cos(a)*8,vy:Math.sin(a)*8,owner:p.id,life:70});}
+function throwGrenade(p){const now=Date.now();if(now-(p.lastGrenade||0)<1800||!p.alive)return;p.lastGrenade=now;const a=p.angle||0;grenades.push({x:p.x,y:p.y,vx:Math.cos(a)*4,vy:Math.sin(a)*4,fuse:75,owner:p.id});}
+function localInput(){let x=(keys.d||keys.ArrowRight?1:0)-(keys.a||keys.ArrowLeft?1:0),y=(keys.s||keys.ArrowDown?1:0)-(keys.w||keys.ArrowUp?1:0);return{x,y};}
+function move(p,input){let x=input.x||0,y=input.y||0;const n=Math.hypot(x,y)||1;p.x=Math.max(ship.x+18,Math.min(ship.x+ship.w-18,p.x+x/n*3));p.y=Math.max(ship.y+18,Math.min(ship.y+ship.h-18,p.y+y/n*3));}
+function update(){
+ worldTime++;
+ if(isHost){
+  const me=players[myId];if(me){move(me,localInput());me.angle=Math.atan2(aim.y-me.y,aim.x-me.x);if(fire)shoot(me);if(throwing)throwGrenade(me);}
+  Object.values(players).forEach(p=>{if(p.id!==myId&&p.input)move(p,p.input);});
+  bullets.forEach(b=>{b.x+=b.vx;b.y+=b.vy;b.life--;Object.values(players).forEach(p=>{if(p.id!==b.owner&&p.alive&&Math.hypot(p.x-b.x,p.y-b.y)<17){p.hp-=18;b.life=0;if(p.hp<=0){p.alive=false;setTimeout(()=>{p.hp=100;p.alive=true;p.x=rand(160,800);p.y=rand(160,430);},2200);}}});});
+  bullets=bullets.filter(b=>b.life>0&&b.x>ship.x&&b.x<ship.x+ship.w&&b.y>ship.y&&b.y<ship.y+ship.h);
+  grenades.forEach(g=>{g.x+=g.vx;g.y+=g.vy;g.vx*=.97;g.vy*=.97;g.fuse--;if(g.fuse===0){Object.values(players).forEach(p=>{let d=Math.hypot(p.x-g.x,p.y-g.y);if(p.id!==g.owner&&d<85){p.hp-=Math.round(55*(1-d/100));if(p.hp<=0){p.alive=false;setTimeout(()=>{p.hp=100;p.alive=true;},2200);}}});g.explode=1;}});grenades=grenades.filter(g=>g.fuse>0);
+  if(Date.now()-lastBroadcast>50){packet({type:'state',players,bullets,grenades});lastBroadcast=Date.now();}
+ }
+ else if(hostConn&&hostConn.open){const a=localInput();packet({type:'input',input:a,angle:Math.atan2(aim.y-(players[myId]?.y||300),aim.x-(players[myId]?.x||480)),fire,grenade:throwing});throwing=false;}
+ draw();requestAnimationFrame(update);
+}
+function draw(){
+ ctx.clearRect(0,0,W,H);
+ // ocean
+ ctx.fillStyle='#09283b';ctx.fillRect(0,0,W,H);
+ ctx.strokeStyle='rgba(80,190,220,.16)';ctx.lineWidth=2;for(let y=20;y<H;y+=34){ctx.beginPath();for(let x=0;x<W;x+=12)ctx.lineTo(x,y+Math.sin(x*.025+y*.04+worldTime*.025)*4);ctx.stroke();}
+ // ship deck
+ ctx.fillStyle='#586b73';ctx.fillRect(ship.x,ship.y,ship.w,ship.h);ctx.strokeStyle='#b9c6c5';ctx.lineWidth=7;ctx.strokeRect(ship.x,ship.y,ship.w,ship.h);
+ ctx.fillStyle='#354a53';ctx.fillRect(390,205,180,190);ctx.strokeStyle='#87989b';ctx.lineWidth=3;ctx.strokeRect(390,205,180,190);
+ ctx.fillStyle='#71848a';ctx.fillRect(425,225,110,35);ctx.fillRect(425,340,110,35);ctx.fillRect(80,100,120,50);ctx.fillRect(760,450,100,45);
+ ctx.strokeStyle='rgba(230,240,235,.18)';ctx.lineWidth=1;for(let x=80;x<880;x+=40){ctx.beginPath();ctx.moveTo(x,65);ctx.lineTo(x,535);ctx.stroke();}
+ // players
+ Object.values(players).forEach(p=>{if(!p.alive)return;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle||0);ctx.fillStyle='#182631';ctx.fillRect(-13,-10,28,20);ctx.fillStyle=p.color;ctx.fillRect(-10,-9,19,18);ctx.fillStyle='#d5e4e9';ctx.fillRect(0,-3,23,6);ctx.restore();ctx.fillStyle='white';ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(p.name+(p.id===myId?' (YOU)':''),p.x,p.y-22);ctx.fillStyle='#311e24';ctx.fillRect(p.x-18,p.y-17,36,4);ctx.fillStyle='#73e19b';ctx.fillRect(p.x-18,p.y-17,36*Math.max(0,p.hp)/100,4);});
+ bullets.forEach(b=>{ctx.fillStyle='#ffe18a';ctx.beginPath();ctx.arc(b.x,b.y,3,0,Math.PI*2);ctx.fill();});
+ grenades.forEach(g=>{ctx.fillStyle='#b5c28b';ctx.beginPath();ctx.arc(g.x,g.y,7,0,Math.PI*2);ctx.fill();});
+ const me=players[myId];document.getElementById('players').textContent='PLAYERS '+Object.keys(players).length+'/4';document.getElementById('health').textContent='HEALTH '+(me?Math.max(0,me.hp):100);document.getElementById('copy').disabled=!isHost||!roomCode;
+}
+window.addEventListener('keydown',e=>{keys[e.key]=true;if(e.key===' ')throwing=true;});window.addEventListener('keyup',e=>keys[e.key]=false);
+c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();aim.x=(e.clientX-r.left)/r.width*W;aim.y=(e.clientY-r.top)/r.height*H;});
+c.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')fire=true;});window.addEventListener('pointerup',()=>fire=false);
+document.getElementById('fire').onpointerdown=()=>fire=true;document.getElementById('fire').onpointerup=()=>fire=false;document.getElementById('grenade').onpointerdown=()=>throwing=true;
+document.querySelectorAll('[data-move]').forEach(b=>{const k={up:'w',down:'s',left:'a',right:'d'}[b.dataset.move];b.onpointerdown=e=>{e.preventDefault();keys[k]=true;};b.onpointerup=b.onpointerleave=()=>keys[k]=false;});
+ctx.fillStyle='#eaf7ff';ctx.textAlign='center';ctx.font='bold 25px system-ui';ctx.fillText('CREATE A ROOM TO DEPLOY',W/2,H/2-10);ctx.font='15px system-ui';ctx.fillStyle='#a9c0d0';ctx.fillText('Invite up to 3 friends with your room code',W/2,H/2+22);
+update();
+})();
+</script>
+</body></html>
