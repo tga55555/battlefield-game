@@ -145,6 +145,33 @@ footer{background:linear-gradient(180deg,transparent,rgba(0,13,33,.52));padding:
  footer{padding:9px 8px 12px}
 }
 
+
+/* Desktop + laptop responsive presentation */
+@media (min-width: 768px){
+ body{min-height:100vh;background-position:center top,center center;background-size:100% 100%,cover;background-attachment:fixed}
+ header{padding:22px 18px 12px}
+ header h1{font-size:clamp(42px,4.5vw,64px);letter-spacing:5px}
+ header p{font-size:clamp(17px,1.6vw,21px);letter-spacing:1.2px}
+ main{width:min(94vw,1120px);max-width:1120px;padding:20px 24px 28px}
+ .panel{padding:24px;margin:16px auto;border-radius:22px}
+ #lobby{max-width:900px;margin:18px auto}
+ #lobby h2{font-size:30px}
+ #lobby .rules{font-size:17px;line-height:1.55;max-width:780px}
+ #lobby .small{font-size:14px}
+ #lobby .row{max-width:820px}
+ #game{max-width:1000px;margin:16px auto;padding:24px 30px}
+ #game .grid{width:min(100%,520px);max-width:520px;gap:10px;margin:18px auto}
+ #game .cell{border-radius:16px;min-height:0}
+ #game h2{font-size:30px}
+ #game h3{font-size:23px}
+ #game .rules{font-size:16px}
+ .players{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+ .player{padding:13px;font-size:15px}
+ input,select,button{padding:13px 16px}
+ footer{padding:18px 14px 24px;font-size:18px}
+}
+@media (min-width:1200px){main{width:min(90vw,1240px);max-width:1240px}#game .grid{max-width:560px}}
+
 </style></head><body><header><h1>BATTLESHIP</h1><p>ONE HIDDEN SHIP, SAIL OR SINK</p></header><main>
 <section class="panel" id="lobby"><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses Start Challenge. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM (HOST ONLY)</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="muted small">ONLY ONE HOST: the host taps Create room once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
 <section class="panel hidden" id="game"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">Final ship challenge</h2><div class="muted small">Room: <b id="roomLabel"></b></div></div><button class="gold" id="copy">Copy invite link</button><button id="reconnect" class="hidden">Reconnect</button></div><div class="status" id="status">Waiting for players…</div><div class="players" id="players"></div><div id="placeArea"><h3>Hide your ship</h3><p class="rules small" id="placeHint">Choose exactly one square on the 3×3 ocean. You can lock in only one ship, and its position cannot be changed afterward.</p><div class="grid" id="placeGrid"></div><button id="finishPlacement" class="gold" disabled>Lock in my ship</button></div>
