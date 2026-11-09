@@ -90,6 +90,61 @@ footer{margin-top:auto;background:linear-gradient(180deg,rgba(0,24,49,.08),rgba(
  footer{padding:12px 10px 18px;font-size:clamp(14px,3.8vw,17px)}
 }
 
+
+/* Mobile cinematic rebuild: artwork is the scene, UI is a light overlay. */
+html{min-height:100%;background:#03172e}
+body{
+ min-height:100vh;min-height:100svh;
+ background-color:#03172e;
+ background-image:linear-gradient(180deg,rgba(1,12,30,.04) 0%,rgba(1,18,39,.12) 48%,rgba(1,13,31,.34) 100%),url("naval-lobby.svg");
+ background-position:center top,center top;
+ background-size:100% 100%,auto 100svh;
+ background-repeat:no-repeat,no-repeat;
+ background-attachment:scroll,scroll;
+}
+header{padding:8px 8px 5px}
+header h1{font-size:clamp(25px,7vw,40px);letter-spacing:2.5px}
+header p{font-size:clamp(13px,3.5vw,16px);letter-spacing:1px}
+main{max-width:680px;padding:7px 10px}
+#lobby.panel,#game.panel{
+ background:linear-gradient(145deg,rgba(2,19,43,.73),rgba(2,31,57,.58));
+ border:1px solid rgba(130,231,255,.82);
+ border-radius:17px;
+ box-shadow:0 8px 26px rgba(0,8,24,.4),inset 0 1px rgba(255,255,255,.16),0 0 17px rgba(20,180,240,.2);
+ -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+}
+#lobby h2{color:#ffe19a;text-shadow:0 2px 9px #00152e}
+#lobby .rules,#lobby .small{color:#f0fbff;text-shadow:0 1px 4px #00152e}
+#game .grid{width:min(100%,390px);max-width:390px;gap:6px}
+#game .cell{
+ background-color:#087cb5;
+ background-image:linear-gradient(180deg,rgba(0,170,225,.04),rgba(0,24,62,.08)),url("naval-ocean.svg");
+ background-size:cover;background-position:center;
+ border:2px solid rgba(148,239,255,.95);
+ border-radius:12px;
+ box-shadow:inset 0 0 14px rgba(210,250,255,.2),0 2px 9px rgba(0,9,30,.32);
+}
+#game .cell.selected{border-color:#fff4bd;box-shadow:0 0 0 2px #ffdc78,0 0 18px #54e4ff}
+#game .cell.guessed{background-image:linear-gradient(135deg,rgba(24,48,69,.72),rgba(2,22,49,.82)),url("naval-ocean.svg")}
+#game .cell.hit{background-image:radial-gradient(circle,#fff2a6,#ff7629 48%,#7d172b 90%),url("naval-ocean.svg")}
+.cell:has(.locked-ship-art),.cell.selected:has(.locked-ship-art){
+ background-image:none;background-color:transparent;border:2px solid #72e4ff;
+ box-shadow:0 0 13px rgba(50,211,255,.7);overflow:hidden
+}
+.cell .locked-ship-art{width:100%;height:100%;object-fit:cover;transform:none;border-radius:9px}
+footer{background:linear-gradient(180deg,transparent,rgba(0,13,33,.52));padding:10px 8px 14px}
+@media(max-width:520px){
+ body{background-size:100% 100%,auto 100svh;background-position:center top,center top}
+ header{padding:6px 8px 3px}
+ main{padding:5px 9px}
+ #lobby.panel{padding:11px}
+ #lobby h2{margin:3px 0 8px}
+ #lobby .rules{margin:7px 0 10px;line-height:1.28}
+ #game .grid{width:100%;max-width:min(88vw,350px);gap:5px}
+ #game .cell{border-radius:10px}
+ footer{padding:9px 8px 12px}
+}
+
 </style></head><body><header><h1>BATTLESHIP</h1><p>ONE HIDDEN SHIP, SAIL OR SINK</p></header><main>
 <section class="panel" id="lobby"><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses Start Challenge. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM (HOST ONLY)</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="muted small">ONLY ONE HOST: the host taps Create room once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
 <section class="panel hidden" id="game"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">Final ship challenge</h2><div class="muted small">Room: <b id="roomLabel"></b></div></div><button class="gold" id="copy">Copy invite link</button><button id="reconnect" class="hidden">Reconnect</button></div><div class="status" id="status">Waiting for players…</div><div class="players" id="players"></div><div id="placeArea"><h3>Hide your ship</h3><p class="rules small" id="placeHint">Choose exactly one square on the 3×3 ocean. You can lock in only one ship, and its position cannot be changed afterward.</p><div class="grid" id="placeGrid"></div><button id="finishPlacement" class="gold" disabled>Lock in my ship</button></div>
