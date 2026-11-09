@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1800">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#061b43"/><stop offset=".32" stop-color="#0875c7"/><stop offset=".58" stop-color="#16b8ec"/><stop offset="1" stop-color="#06345d"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#fff4b2" stop-opacity=".95"/><stop offset=".2" stop-color="#ff8c36" stop-opacity=".8"/><stop offset="1" stop-color="#ff4d13" stop-opacity="0"/></radialGradient>
+ <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#e6f6ff"/><stop offset=".18" stop-color="#557f9b"/><stop offset=".62" stop-color="#183b5d"/><stop offset="1" stop-color="#06182e"/></linearGradient>
+ <linearGradient id="water" x2="0" y2="1"><stop stop-color="#27d5fa"/><stop offset=".22" stop-color="#087ebd"/><stop offset=".58" stop-color="#03416f"/><stop offset="1" stop-color="#031b3c"/></linearGradient>
+ <linearGradient id="cloud" x2="0" y2="1"><stop stop-color="#f6fbff" stop-opacity=".7"/><stop offset="1" stop-color="#6b9bb9" stop-opacity=".05"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="20"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+ <pattern id="stars" width="110" height="100" patternUnits="userSpaceOnUse"><circle cx="10" cy="18" r="2" fill="#d7f7ff" opacity=".6"/><circle cx="72" cy="44" r="1.5" fill="#fff" opacity=".65"/><circle cx="42" cy="82" r="1" fill="#b4efff" opacity=".7"/></pattern>
+</defs>
+<rect width="1000" height="1800" fill="url(#sky)"/><rect width="1000" height="620" fill="url(#stars)"/>
+<g opacity=".38" fill="url(#cloud)" filter="url(#soft)"><path d="M0 300Q100 190 240 270T500 250T760 270T1000 190V570H0Z"/><path d="M0 500Q200 370 390 460T760 430T1000 400V700H0Z"/></g>
+<g><circle cx="100" cy="460" r="190" fill="url(#glow)"/><circle cx="900" cy="390" r="210" fill="url(#glow)"/><path d="M0 520L75 365 125 510 190 400 235 560 0 620Z" fill="#ff7b27" opacity=".5" filter="url(#soft)"/><path d="M780 480L840 290 900 470 955 330 1000 500V620H780Z" fill="#ff8d31" opacity=".45" filter="url(#soft)"/></g>
+<g fill="#142a43" stroke="#b9e9ff" stroke-width="5" opacity=".92"><path d="M120 220l115 -20 -22 18 38 10 -70 4 -33 22 5 -24Z"/><path d="M740 180l120 -22 -24 18 42 12 -72 3 -35 23 6 -24Z"/><path d="M810 560l105 -18 -20 16 32 9 -62 4 -31 19 5 -20Z"/></g>
+<g transform="translate(0 520)">
+ <path d="M0 300Q170 235 330 280T670 270T1000 250V1280H0Z" fill="url(#water)"/>
+ <g fill="none" stroke="#9ceeff" stroke-width="10" opacity=".65"><path d="M0 420Q150 370 300 420T600 415T1000 390"/><path d="M0 550Q130 500 290 550T620 540T1000 520"/><path d="M0 700Q180 640 360 700T720 680T1000 660"/><path d="M0 900Q160 845 340 900T690 880T1000 860"/><path d="M0 1100Q180 1040 360 1100T720 1080T1000 1060"/></g>
+ <g fill="none" stroke="#e2fbff" stroke-width="5" opacity=".8"><path d="M-30 475q90 -42 180 0t180 0t180 0t180 0t180 0t180 0"/><path d="M-30 770q100 -48 200 0t200 0t200 0t200 0t200 0"/><path d="M-30 1020q100 -42 200 0t200 0t200 0t200 0t200 0"/></g>
+ <g transform="translate(500 170)">
+  <path d="M-410 240L-350 190L-250 175L-170 150L-95 135L-55 85L-15 80L10 20L45 20L70 85L115 100L160 115L205 145L315 170L390 205L440 245L390 275L-350 275Z" fill="url(#hull)" stroke="#d8f5ff" stroke-width="9"/>
+  <path d="M-350 205L-190 188L-70 170L80 170L220 190L390 220" fill="none" stroke="#f2fbff" stroke-width="10" opacity=".9"/>
+  <path d="M-35 95L-35 -15L-5 -15L-5 -75L24 -75L24 -15L56 -15L56 100Z" fill="#d2e5ed" stroke="#243f59" stroke-width="8"/>
+  <path d="M-20 -80L-20 -125L45 -125L45 -80M-10 -126V-178M30 -126V-190M-10 -160L-60 -185M30 -172L80 -194" stroke="#e9faff" stroke-width="8" fill="none"/>
+  <path d="M-160 155L-160 80L-120 80L-120 155M100 150L100 75L140 75L140 155M220 182L220 125L255 125L255 190" fill="#8caebd" stroke="#193650" stroke-width="7"/>
+  <g fill="#f9fbff" stroke="#24435c" stroke-width="5"><path d="M-185 72h100v18h-100z"/><path d="M75 65h105v18H75z"/><path d="M-110 10h50v35h-50z"/><path d="M75 5h50v35H75z"/></g>
+  <g stroke="#d8f5ff" stroke-width="8"><path d="M-135 88V-5M-105 88V-5M125 75V-20M155 75V-20"/></g>
+  <g fill="#f2fbff" opacity=".9"><circle cx="-280" cy="220" r="8"/><circle cx="-240" cy="215" r="8"/><circle cx="280" cy="228" r="8"/><circle cx="320" cy="232" r="8"/></g>
+ </g>
+ <g fill="none" stroke="#fff" stroke-width="8" opacity=".85"><path d="M40 320q100 -55 210 0t220 0t220 0t220 0"/><path d="M0 610q120 -50 240 0t240 0t240 0t240 0"/><path d="M20 850q100 -38 200 0t200 0t200 0t200 0"/></g>
+</g>
+<rect width="1000" height="1800" fill="none" stroke="#9ceeff" stroke-opacity=".12" stroke-width="12"/>
+</svg>
