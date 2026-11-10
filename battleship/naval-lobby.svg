@@ -69,4 +69,11 @@
 <g fill="none" stroke="#f3fdff" stroke-width="5" opacity=".66"><path d="M25 710l130-23m55 25l115-20m85 24l130-24m70 25l135-20m-610 230l140-22m70 24l120-20m90 24l145-22m-565 235l135-22m80 22l135-20m70 22l145-20m-565 250l130-20m70 22l130-20m80 22l140-20"/></g>
 <g fill="#f3fdff" opacity=".85"><path d="M75 745l25-36 29 40-30-10Z"/><path d="M700 850l29-38 32 41-34-11Z"/><path d="M280 1040l24-34 30 38-30-10Z"/><path d="M100 1370l30-40 32 43-34-12Z"/><path d="M760 1580l26-36 30 40-32-10Z"/></g>
 <rect width="900" height="1800" fill="none" stroke="#6edfff" stroke-opacity=".12" stroke-width="18"/>
+
+<g transform="rotate(-7 450 492)">
+ <text x="450" y="505" text-anchor="middle" textLength="245" lengthAdjust="spacingAndGlyphs"
+  font-family="Arial Black,Arial,sans-serif" font-size="39" font-weight="900"
+  fill="#f3fbff" stroke="#12395c" stroke-width="3" paint-order="stroke"
+  style="filter:drop-shadow(0 2px 5px #001326)">#TeamSmoke</text>
+</g>
 </svg>
