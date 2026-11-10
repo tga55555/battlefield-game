@@ -59,6 +59,41 @@ body{background-image:linear-gradient(180deg,rgba(0,8,22,.15),rgba(0,12,30,.62) 
 .cinematic-hero{height:clamp(190px,27vw,310px);min-height:0;padding:0;background-position:center center;background-size:cover;background-repeat:no-repeat;display:block;position:relative}
 .cinematic-hero h1,.cinematic-hero p{display:none}
 @media(max-width:560px){.cinematic-hero{height:190px;min-height:190px;max-height:190px;background-position:center center}main{max-width:680px;padding:14px 12px 22px}#lobby.setup-panel{max-width:100%;padding:20px 17px}.setup-title{margin-bottom:14px}#lobby .rules{font-size:15px;line-height:1.48}footer{margin-top:4px}}
+
+/* Restore the designed full-width mobile lobby card and real control styling. */
+html,body{width:100%;min-width:0;overflow-x:hidden}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:normal}
+.cinematic-hero{width:100%;height:clamp(230px,34vw,360px);min-height:0;max-height:none;background-position:center top!important;background-size:100% 100%!important}
+main{width:100%;max-width:1040px;margin:0 auto;padding:24px clamp(14px,3vw,34px) 30px}
+.landing-layout{display:block;width:100%}
+#lobby.setup-panel{display:block;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,3.4vw,38px);border:3px solid #49d5ff;border-radius:26px;text-align:left;letter-spacing:normal;font-size:clamp(16px,1.8vw,19px);font-weight:400;color:#eaf8ff;background:linear-gradient(145deg,rgba(5,39,70,.97),rgba(2,19,43,.97));box-shadow:0 0 0 1px #b5f1ff66 inset,0 0 28px #00aaff55,0 18px 42px #0009;text-shadow:none}
+#lobby .setup-title{display:block;width:100%;margin:0 0 22px;padding:13px 16px;border:2px solid #4bcfff;border-radius:13px;background:linear-gradient(100deg,#073b61,#07517b,#052d50);text-align:center;color:#f4fbff;font-size:clamp(20px,2.5vw,27px);font-weight:1000;letter-spacing:3px;text-shadow:0 2px 8px #00152d}
+#lobby h2{margin:0 0 14px;text-align:center;color:#ffdf82;font-size:clamp(24px,3vw,34px);line-height:1.2;font-weight:900;letter-spacing:normal;text-shadow:0 2px 10px #ffbf4544}
+#lobby .rules{margin:0 0 22px;color:#d8edfa;font-size:clamp(16px,1.9vw,20px);line-height:1.55;font-weight:400;letter-spacing:normal;text-align:left}
+#lobby .row{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;margin:0}
+#lobby .row+ .row{margin-top:14px!important}
+#lobby input{display:block;flex:0 0 auto;width:100%;min-width:0;height:64px;min-height:64px;padding:0 18px;border:2px solid #35c8f4;border-radius:15px;background:rgba(0,14,33,.96);color:#f4fbff;font:500 17px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:normal;box-shadow:inset 0 3px 12px #0007}
+#lobby input::placeholder{color:#a9ccdf;opacity:1}
+#lobby button{display:block;flex:0 0 auto;width:100%;min-width:0;height:64px;min-height:64px;padding:10px 18px;border:2px solid #8ce7ff;border-radius:15px;background:linear-gradient(180deg,#19a9df,#0870ad 58%,#075183);color:#fff;font:900 18px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:1px;text-align:center;text-shadow:0 2px 4px #00203c;box-shadow:0 5px 0 #032c4d,0 0 16px #00aaff44;cursor:pointer}
+#lobby button:active{transform:translateY(2px);box-shadow:0 3px 0 #032c4d}
+#lobby .status{margin:22px 0 8px;color:#ffdc78;font-size:clamp(19px,2.2vw,23px);font-weight:900;letter-spacing:normal;text-align:left;text-shadow:none}
+#lobby .muted.small{margin:0;color:#c3dfef;font-size:clamp(14px,1.6vw,17px);font-weight:400;line-height:1.55;letter-spacing:normal;text-align:left;text-shadow:none}
+footer{margin:12px auto 0;width:100%;letter-spacing:2px}
+@media(max-width:560px){
+ .cinematic-hero{height:clamp(225px,64vw,270px);min-height:0;max-height:none;background-position:center top!important;background-size:100% 100%!important}
+ main{width:100%;max-width:none;padding:18px 12px 24px}
+ #lobby.setup-panel{width:100%;max-width:none;margin:0;padding:20px 17px;border-radius:22px}
+ #lobby .setup-title{margin-bottom:18px;padding:11px 10px;font-size:21px;letter-spacing:2.5px}
+ #lobby h2{font-size:26px;line-height:1.2;margin-bottom:13px}
+ #lobby .rules{font-size:16px;line-height:1.5;margin-bottom:19px}
+ #lobby .row{display:flex;flex-direction:column;gap:12px}
+ #lobby .row+ .row{margin-top:13px!important}
+ #lobby input,#lobby button{width:100%;height:60px;min-height:60px;max-height:none;flex-basis:auto;font-size:16px}
+ #lobby button{font-size:17px}
+ #lobby .status{margin:20px 0 8px;font-size:20px}
+ #lobby .muted.small{font-size:14px;line-height:1.5}
+ footer{font-size:12px;line-height:1.45;letter-spacing:1.2px;padding:14px 10px calc(20px + env(safe-area-inset-bottom))}
+}
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel setup-panel" id="lobby"><div class="setup-title">GAME SETUP</div><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses Start Challenge. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: the host taps Create room once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
