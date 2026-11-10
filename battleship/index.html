@@ -120,6 +120,41 @@ footer{padding-bottom:calc(26px + env(safe-area-inset-bottom))}
 .fleet-wait span:last-of-type{font-size:clamp(13px,1.5vw,17px);color:#e3f6ff}
 #fleetPreview .preview-note{font-size:clamp(11px,1.3vw,15px);line-height:1.5}
 @media(max-width:560px){.cinematic-hero{min-height:190px;padding:22px 8px 12px;background-position:center 38%;background-size:cover}.cinematic-hero h1{font-size:clamp(30px,9vw,42px);letter-spacing:1.5px}.cinematic-hero p{font-size:13px;letter-spacing:2px;margin-top:3px}#fleetPreview .preview-ocean.lobby-scene{min-height:230px;padding:12px 8px}.fleet-wait{padding:14px 9px;gap:8px;max-width:100%;width:100%}.fleet-wait strong{font-size:clamp(19px,5.4vw,23px)}.fleet-wait-kicker,.fleet-wait-rule{font-size:9px;letter-spacing:.7px}.fleet-wait span:last-of-type{font-size:12px;line-height:1.35}#fleetPreview .preview-note{padding:9px 6px;font-size:9px;letter-spacing:.5px}}
+
+/* Correct phone layout: stack the lobby panels instead of squeezing two columns. */
+@media(max-width:850px){
+ .landing-layout{grid-template-columns:minmax(0,1fr)!important;max-width:560px;margin:0 auto;gap:14px;align-items:start}
+ #lobby{width:100%;padding:20px 18px}
+ #lobby h2{font-size:24px;line-height:1.18}
+ #lobby .rules{font-size:15px;line-height:1.48;margin:10px 0 16px}
+ #lobby .muted.small{font-size:14px;line-height:1.5}
+ #fleetPreview{width:100%;min-height:0}
+ #fleetPreview .preview-ocean.lobby-scene{min-height:245px;padding:18px 14px;background-image:linear-gradient(180deg,rgba(0,18,42,.18),rgba(0,13,32,.42)),url("naval-ocean.svg");background-position:center;background-size:cover}
+ .fleet-wait{width:min(100%,420px);padding:18px 16px}
+ .fleet-wait strong{font-size:clamp(25px,6vw,34px)}
+ .fleet-wait-kicker,.fleet-wait-rule{font-size:12px;letter-spacing:1.1px}
+ .fleet-wait span:last-of-type{font-size:15px;line-height:1.4}
+ #fleetPreview .preview-note{font-size:12px;padding:12px 10px}
+}
+@media(max-width:560px){
+ header.cinematic-hero{min-height:clamp(190px,54vw,245px);padding:26px 10px 14px;background-position:center 42%;background-size:cover}
+ .cinematic-hero h1{font-size:clamp(36px,10vw,48px);letter-spacing:1.5px}
+ .cinematic-hero p{font-size:14px;letter-spacing:2px}
+ main{width:100%;padding:10px 12px 20px}
+ .landing-layout{grid-template-columns:minmax(0,1fr)!important;gap:12px}
+ #lobby{padding:18px 16px;border-radius:17px}
+ #lobby h2{font-size:23px}
+ #lobby .rules{font-size:15px;line-height:1.48}
+ #lobby .row{display:flex;flex-direction:column;align-items:stretch;gap:9px}
+ #lobby input,#lobby button{width:100%;min-height:48px;font-size:14px;padding:12px}
+ #fleetPreview{min-height:0;border-radius:17px}
+ #fleetPreview .preview-ocean.lobby-scene{min-height:230px;padding:14px 10px}
+ .fleet-wait{padding:16px 12px;gap:9px}
+ .fleet-wait strong{font-size:26px}
+ .fleet-wait-kicker,.fleet-wait-rule{font-size:10px;letter-spacing:.8px}
+ .fleet-wait span:last-of-type{font-size:14px}
+ footer{font-size:13px;line-height:1.4;letter-spacing:1px;padding:16px 10px calc(24px + env(safe-area-inset-bottom))}
+}
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel" id="lobby"><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses Start Challenge. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM (HOST ONLY)</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: the host taps Create room once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
