@@ -1,43 +1,39 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>BATTLESHIP — Smoke After Dark Showdown</title><script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <style>
-/* Fresh cinematic naval redesign */
-:root{color-scheme:dark;--navy:#03172d;--blue:#0879bd;--cyan:#56dcff;--gold:#ffbd42;--white:#f4fbff;--line:#4acfff}
+:root{color-scheme:dark;--navy:#03172d;--panel:#061d38;--cyan:#55d9ff;--gold:#ffda70;--white:#f4fbff}
 *{box-sizing:border-box}
 html{min-height:100%;background:#03172d}
-body{margin:0;min-height:100vh;min-height:100svh;color:var(--white);font:16px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;background:#03172d url("naval-lobby.svg") center top/cover fixed no-repeat;position:relative;isolation:isolate}
-body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,10,25,.08),rgba(0,16,39,.35) 48%,rgba(0,10,27,.78));pointer-events:none}
-header{padding:18px 12px 10px;text-align:center;position:relative;z-index:1}
-header h1{margin:0;font-size:clamp(38px,6vw,76px);line-height:.98;font-weight:1000;letter-spacing:clamp(2px,.6vw,7px);color:#f5fbff;-webkit-text-stroke:1px #285d8a;text-shadow:0 3px 0 #06284b,0 6px 0 #03172d,0 0 15px #3bd4ff,0 0 34px #087ec9}
-header p{display:inline-block;margin:8px 0 0;padding:4px 24px;border-top:2px solid #8ceaff;border-bottom:2px solid #8ceaff;font-size:clamp(15px,2vw,23px);font-weight:1000;letter-spacing:3px;color:#fff;text-shadow:0 2px 8px #00152d,0 0 14px #00aaff}
-main{width:min(1440px,96vw);margin:0 auto;padding:12px 12px 28px;position:relative;z-index:1}
-.landing-layout{display:grid;grid-template-columns:minmax(320px,.88fr) minmax(420px,1.12fr);gap:22px;align-items:stretch}
-.panel,#fleetPreview{border:2px solid rgba(80,215,255,.95);border-radius:20px;background:linear-gradient(145deg,rgba(0,23,51,.70),rgba(0,43,75,.58));box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px rgba(0,10,30,.7),0 0 24px rgba(0,174,255,.38),0 16px 42px rgba(0,5,20,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-#lobby{padding:clamp(18px,2.2vw,30px);margin:0;align-self:stretch}
-#lobby h2,#game h2{margin:0 0 13px;color:#fff0a8;font-size:clamp(24px,2.7vw,34px);font-weight:950;letter-spacing:.5px;text-shadow:0 2px 8px #00152c,0 0 14px #ff9f2d}
-.rules{color:#e9f8ff;line-height:1.55}
-#lobby .rules{font-size:clamp(14px,1.15vw,17px);margin:12px 0 20px}
-.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-input,select,button{font:inherit;color:#f7fcff;border:1px solid #4bbfe8;border-radius:11px;padding:13px 15px;background:rgba(1,18,39,.94);min-width:0}
-input{flex:1 1 170px;box-shadow:inset 0 2px 8px #0008}
-input::placeholder{color:#a9cddd}
+body{margin:0;min-height:100vh;min-height:100svh;color:var(--white);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:#03172d url("naval-lobby.svg") center top/cover fixed no-repeat;position:relative;isolation:isolate}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,9,24,.18),rgba(0,15,36,.55) 55%,rgba(0,8,24,.9));pointer-events:none}
+.cinematic-hero{min-height:clamp(220px,31vw,390px);padding:clamp(30px,5vw,62px) 16px 24px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:linear-gradient(180deg,rgba(0,8,22,.12),rgba(0,13,32,.12) 55%,rgba(0,12,30,.72)),url("naval-lobby.svg") center 38%/cover no-repeat;box-shadow:0 8px 28px #00101f99}
+.cinematic-hero h1{margin:0;font-size:clamp(42px,7vw,86px);line-height:1;font-weight:1000;letter-spacing:clamp(2px,.7vw,8px);color:#f5fbff;-webkit-text-stroke:1px #285d8a;text-shadow:0 4px 0 #06284b,0 7px 0 #03172d,0 0 18px #3bd4ff,0 0 38px #087ec9}
+.cinematic-hero p{display:inline-block;margin:12px 0 0;padding:5px 26px;border-top:2px solid #8ceaff;border-bottom:2px solid #8ceaff;font-size:clamp(15px,2vw,23px);font-weight:1000;letter-spacing:3px;color:#fff;text-shadow:0 2px 8px #00152d,0 0 14px #00aaff}
+main{width:min(1320px,96vw);margin:0 auto;padding:22px 14px 28px;position:relative;z-index:1}
+.landing-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.panel,#fleetPreview{border:2px solid rgba(80,215,255,.95);border-radius:20px;background:linear-gradient(145deg,rgba(0,23,51,.9),rgba(0,43,75,.82));box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px rgba(0,10,30,.7),0 0 24px rgba(0,174,255,.32),0 16px 42px rgba(0,5,20,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+#lobby.setup-panel{width:100%;max-width:640px;margin:0 auto;padding:clamp(20px,2.6vw,34px);justify-self:center;align-self:center}
+.setup-title{width:100%;margin:0 0 18px;padding:10px 12px;text-align:center;border:1px solid rgba(119,224,255,.9);border-radius:10px;background:linear-gradient(90deg,rgba(0,22,48,.96),rgba(8,93,143,.94),rgba(0,22,48,.96));color:#f5fbff;font-size:clamp(19px,2vw,25px);font-weight:1000;letter-spacing:2.5px;text-shadow:0 2px 6px #001329,0 0 12px #00aaff}
+#lobby h2,#game h2{margin:0 0 14px;text-align:center;color:#fff0a8;font-size:clamp(23px,2.4vw,31px);font-weight:950;text-shadow:0 2px 8px #00152c,0 0 14px #ff9f2d}
+.rules{color:#e9f8ff;line-height:1.5}
+#lobby .rules{font-size:clamp(15px,1.2vw,17px);margin:12px 0 20px}
+#lobby .row{display:flex;flex-direction:column;align-items:stretch;gap:11px;flex-wrap:nowrap;margin:0}
+#lobby .row+.row{margin-top:13px!important}
+input,select,button{font:inherit;color:#f7fcff;border:1px solid #4bbfe8;border-radius:11px;padding:13px 15px;background:rgba(1,18,39,.96);min-width:0;box-sizing:border-box}
+#lobby .row input{display:block;flex:0 0 56px;width:100%;height:56px;min-height:56px;max-height:56px;font-size:16px;line-height:1.2;box-shadow:inset 0 2px 8px #0008}
+input::placeholder{color:#a9cddd;opacity:1}
 button{cursor:pointer;font-weight:900;letter-spacing:.3px;background:linear-gradient(180deg,#159ed8,#07558e);border:1px solid #9aeaff;box-shadow:0 3px 0 #043a67,0 0 15px #078dd766;text-shadow:0 1px 3px #00233f;transition:filter .15s,transform .15s}
+#lobby .row button{display:block;flex:0 0 56px;width:100%;height:56px;min-height:56px;max-height:56px;padding:10px 14px;font-size:17px;line-height:1.2}
 button:hover:not(:disabled){filter:brightness(1.18);transform:translateY(-1px)}
 button:disabled{opacity:.42;cursor:not-allowed}
 button.gold{background:linear-gradient(180deg,#ffd05d,#e77913 70%,#9d4308);border:1px solid #ffe6a0;color:#fff;text-shadow:0 2px 3px #663000;box-shadow:0 3px 0 #713506,0 0 18px #ff9b2780}
-#host,#join{flex:1 1 190px;min-height:52px}
-#lobby .status,.status{color:#ffe28a;font-weight:850;text-shadow:0 1px 5px #00152d}
+#host,#join{min-height:56px}
+#lobby .status,.status{color:#ffe28a;font-weight:850;text-shadow:0 1px 5px #00152d;margin:17px 0 8px}
 #lobby .small,.muted{color:#c7e8f6}
-#fleetPreview{padding:0;overflow:hidden;min-height:430px;display:flex;flex-direction:column}
-.preview-head{padding:17px 20px 13px;text-align:center;background:linear-gradient(90deg,rgba(0,76,126,.85),rgba(0,31,68,.95),rgba(0,76,126,.85));border-bottom:1px solid #55d9ff}
-.preview-head h2{margin:0;font-size:clamp(23px,2.5vw,32px);font-weight:1000;letter-spacing:2px;text-shadow:0 2px 8px #001329,0 0 15px #31cfff}
-.preview-head p{margin:3px 0 0;color:#ccefff;font-size:13px;letter-spacing:1.4px;font-weight:800}
-.preview-ocean{flex:1;min-height:330px;padding:22px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(0,28,57,.10),rgba(0,15,42,.35)),url("naval-cinematic-header.jpg") center 54%/cover no-repeat}
-.preview-grid{width:min(100%,510px);aspect-ratio:1.25;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);border:3px solid #62dcff;border-radius:12px;overflow:hidden;box-shadow:0 0 0 3px #073b68,0 0 30px #00bfff99,inset 0 0 30px #00bfff55}
-.preview-cell{display:grid;place-items:center;border:1px solid rgba(126,231,255,.65);background:linear-gradient(145deg,rgba(4,107,158,.12),rgba(0,20,48,.18));font-size:clamp(26px,4vw,48px);text-shadow:0 3px 7px #00152d;filter:drop-shadow(0 4px 5px #00152d)}
-.preview-cell:nth-child(2),.preview-cell:nth-child(4),.preview-cell:nth-child(6),.preview-cell:nth-child(8){background-color:rgba(0,100,150,.2)}
-.preview-note{text-align:center;padding:12px;color:#cceeff;font-size:13px;letter-spacing:.8px;font-weight:800;background:rgba(0,15,38,.48)}
-footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px 12px 26px;font-size:clamp(15px,2vw,22px);font-weight:1000;letter-spacing:2px;color:#f5fbff;text-shadow:0 2px 7px #001329,0 0 14px #18bfff,0 0 25px #087ec9;background:linear-gradient(180deg,transparent,rgba(0,9,28,.58))}
+#fleetPreview{padding:0;overflow:hidden;min-height:440px;display:block;position:relative;background:linear-gradient(180deg,rgba(0,20,44,.08),rgba(0,10,28,.4)),url("naval-cinematic-header.jpg") center/cover no-repeat}
+#fleetPreview .preview-head,#fleetPreview .preview-note{display:none}
+#fleetPreview .preview-ocean.lobby-scene{min-height:440px;width:100%;background:linear-gradient(180deg,transparent,rgba(0,16,38,.25));}
+footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px 12px calc(26px + env(safe-area-inset-bottom));font-size:clamp(14px,2vw,22px);font-weight:1000;letter-spacing:2px;color:#f5fbff;text-shadow:0 2px 7px #001329,0 0 14px #18bfff,0 0 25px #087ec9;background:linear-gradient(180deg,transparent,rgba(0,9,28,.68))}
 #game{max-width:1100px;margin:20px auto;padding:clamp(15px,2vw,28px)}
 #game h3{color:#dff8ff;font-size:22px}
 .players{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
@@ -51,145 +47,37 @@ footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px
 .cell:has(.locked-ship-art){background:transparent;border:0;box-shadow:none}
 .cell .locked-ship-art{object-fit:cover;transform:none;border-radius:9px}
 .coord{position:absolute;top:5px;left:7px;z-index:2;font-size:12px;font-weight:900;color:#fff;text-shadow:0 1px 5px #001522}
-.hidden{display:none!important}
-.small{font-size:13px}
+.hidden{display:none!important}.small{font-size:13px}
 .rankrow{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center;margin:8px 0}
-.rankrow label{color:#ffdf91;font-weight:900}
-.rankrow select{width:100%}
-#rankChoices{max-width:520px}
-#lobby .row+.row{margin-top:12px!important}
+.rankrow label{color:#ffdf91;font-weight:900}.rankrow select{width:100%}#rankChoices{max-width:520px}
 @media(max-width:850px){
- body{background-attachment:scroll;background-position:left top;background-size:auto 100svh}
- main{width:min(100%,720px);padding:9px 12px 22px}
- .landing-layout{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:8px}
- #fleetPreview{min-height:330px}
- .preview-ocean{min-height:270px;padding:14px}
- .preview-grid{max-width:420px}
+ body{background-attachment:scroll}
+ main{width:100%;max-width:720px;padding:16px 14px 22px}
+ .landing-layout{grid-template-columns:minmax(0,1fr);gap:16px}
+ #lobby.setup-panel{max-width:100%;padding:22px 20px}
+ #fleetPreview{min-height:210px}
+ #fleetPreview .preview-ocean.lobby-scene{min-height:210px}
  #game{margin:14px auto}
 }
 @media(max-width:560px){
- header{padding:0}.cinematic-hero img{max-height:none}
- header h1{font-size:clamp(34px,10vw,52px);letter-spacing:2px}
- header p{font-size:15px;letter-spacing:2px;margin-top:6px}
- main{padding:8px 9px 18px}
- #lobby{padding:12px 9px;border-radius:14px}
- #lobby h2{font-size:17px;line-height:1.15}
- #lobby .rules{font-size:11px;line-height:1.32;margin:7px 0 10px}
- .row{gap:8px}
- input,select,button{padding:10px 8px;font-size:11px;border-radius:8px}
- #host,#join{min-height:40px;line-height:1.15}
- #fleetPreview{min-height:300px;border-radius:14px}
- .preview-head{padding:12px 5px}
- .preview-head h2{font-size:17px;letter-spacing:1px}
- .preview-ocean{min-height:245px;padding:7px}
- .preview-grid{aspect-ratio:1}
- .preview-cell{font-size:24px}
- footer{padding:15px 8px 20px;font-size:14px;letter-spacing:1.4px}
- #game{padding:13px 10px}
- .players{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
- .player{padding:9px;font-size:13px}
- .grid{gap:6px}
- .cell{border-radius:9px}
-}
-@media(min-width:851px){
- header{padding:0}.cinematic-hero img{max-height:540px}
- main{padding-top:16px}
- #fleetPreview{min-height:500px}
- .preview-ocean{min-height:390px}
-}
-
-/* Cinematic scene-first lobby refinements */
-body{background-image:url("naval-lobby.svg");background-position:center 42%;background-size:cover;background-attachment:fixed}
-body:before{background:linear-gradient(180deg,rgba(0,8,22,.12) 0%,rgba(0,12,30,.2) 42%,rgba(0,8,24,.76) 100%)}
-#fleetPreview{background:linear-gradient(150deg,rgba(0,35,67,.42),rgba(0,13,35,.72));border-width:3px}
-.preview-head{background:linear-gradient(90deg,rgba(0,20,43,.88),rgba(0,80,125,.72),rgba(0,20,43,.9))}
-.preview-ocean{position:relative;background-image:linear-gradient(180deg,rgba(0,26,54,.08),rgba(0,12,32,.28)),url("naval-cinematic-header.jpg");background-position:center,center 54%;background-size:cover,cover;background-repeat:no-repeat}
-.preview-grid{background:rgba(0,25,54,.08);box-shadow:0 0 0 3px #073b68,0 0 34px #00cfff99,inset 0 0 30px #00bfff33}
-.preview-cell{backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px)}
-.preview-note{background:rgba(0,12,30,.8);letter-spacing:1.2px}
-.cinematic-hero{min-height:clamp(210px,29vw,430px);margin:0 auto;max-width:1600px;padding:clamp(26px,5vw,68px) 12px 18px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;overflow:hidden;text-align:center;background:linear-gradient(180deg,rgba(0,9,25,.08),rgba(0,15,37,.12) 45%,rgba(0,12,30,.6)),url("naval-lobby.svg") center 39%/cover no-repeat;box-shadow:0 8px 28px #00101f99;position:relative}.cinematic-hero h1{margin:0;font-size:clamp(34px,7vw,82px);line-height:.98;font-weight:1000;letter-spacing:clamp(2px,.7vw,8px);color:#f5fbff;-webkit-text-stroke:1px #285d8a;text-shadow:0 4px 0 #06284b,0 7px 0 #03172d,0 0 18px #3bd4ff,0 0 38px #087ec9}.cinematic-hero p{display:inline-block;margin:5px 0 0;padding:4px 24px;border-top:2px solid #8ceaff;border-bottom:2px solid #8ceaff;font-size:clamp(14px,2vw,22px);font-weight:1000;letter-spacing:3px;color:#fff;text-shadow:0 2px 8px #00152d,0 0 14px #00aaff}.preview-head{display:none}
-footer{padding-bottom:calc(26px + env(safe-area-inset-bottom))}
-@media(max-width:850px){body{background-attachment:scroll;background-position:center top;background-size:cover}.preview-ocean{background-position:center,34% 58%}}
-@media(max-width:560px){.preview-ocean{min-height:245px;padding:7px;background-position:center,34% 58%}.preview-grid{background:rgba(0,20,48,.08)}footer{padding-bottom:calc(22px + env(safe-area-inset-bottom))}}
-
-/* Lobby is a cinematic waiting room: no targeting or placement grid until game view. */
-#fleetPreview .preview-ocean.lobby-scene{position:relative;display:flex;align-items:center;justify-content:center;min-height:360px;padding:28px 18px;background:radial-gradient(ellipse at 50% 35%,rgba(14,129,174,.62),transparent 55%),linear-gradient(180deg,#07517b 0%,#06385f 48%,#021a36 100%)}
-#fleetPreview .fleet-wait{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:440px;text-align:center;padding:22px 18px;border:1px solid rgba(116,225,255,.65);border-radius:16px;background:rgba(0,20,44,.62);box-shadow:0 0 28px rgba(0,180,255,.28);backdrop-filter:blur(3px)}
-.fleet-wait-kicker,.fleet-wait-rule{font-size:clamp(11px,1.4vw,15px);font-weight:900;letter-spacing:1.7px;color:#aeeaff}
-.fleet-wait strong{font-size:clamp(24px,3vw,38px);line-height:1.05;letter-spacing:2px;color:#fff;text-shadow:0 0 18px #00aaff}
-.fleet-wait span:last-of-type{font-size:clamp(13px,1.5vw,17px);color:#e3f6ff}
-#fleetPreview .preview-note{font-size:clamp(11px,1.3vw,15px);line-height:1.5}
-@media(max-width:560px){.cinematic-hero{min-height:190px;padding:22px 8px 12px;background-position:center 38%;background-size:cover}.cinematic-hero h1{font-size:clamp(30px,9vw,42px);letter-spacing:1.5px}.cinematic-hero p{font-size:13px;letter-spacing:2px;margin-top:3px}#fleetPreview .preview-ocean.lobby-scene{min-height:230px;padding:12px 8px}.fleet-wait{padding:14px 9px;gap:8px;max-width:100%;width:100%}.fleet-wait strong{font-size:clamp(19px,5.4vw,23px)}.fleet-wait-kicker,.fleet-wait-rule{font-size:9px;letter-spacing:.7px}.fleet-wait span:last-of-type{font-size:12px;line-height:1.35}#fleetPreview .preview-note{padding:9px 6px;font-size:9px;letter-spacing:.5px}}
-
-/* Correct phone layout: stack the lobby panels instead of squeezing two columns. */
-@media(max-width:850px){
- .landing-layout{grid-template-columns:minmax(0,1fr)!important;max-width:560px;margin:0 auto;gap:14px;align-items:start}
- #lobby{width:100%;padding:20px 18px}
- #lobby h2{font-size:24px;line-height:1.18}
- #lobby .rules{font-size:15px;line-height:1.48;margin:10px 0 16px}
- #lobby .muted.small{font-size:14px;line-height:1.5}
- #fleetPreview{width:100%;min-height:0}
- #fleetPreview .preview-ocean.lobby-scene{min-height:245px;padding:18px 14px;background-image:linear-gradient(180deg,rgba(0,18,42,.18),rgba(0,13,32,.42)),url("naval-ocean.svg");background-position:center;background-size:cover}
- .fleet-wait{width:min(100%,420px);padding:18px 16px}
- .fleet-wait strong{font-size:clamp(25px,6vw,34px)}
- .fleet-wait-kicker,.fleet-wait-rule{font-size:12px;letter-spacing:1.1px}
- .fleet-wait span:last-of-type{font-size:15px;line-height:1.4}
- #fleetPreview .preview-note{font-size:12px;padding:12px 10px}
-}
-@media(max-width:560px){
- header.cinematic-hero{min-height:clamp(190px,54vw,245px);padding:26px 10px 14px;background-position:center 42%;background-size:cover}
- .cinematic-hero h1{font-size:clamp(36px,10vw,48px);letter-spacing:1.5px}
- .cinematic-hero p{font-size:14px;letter-spacing:2px}
- main{width:100%;padding:10px 12px 20px}
- .landing-layout{grid-template-columns:minmax(0,1fr)!important;gap:12px}
- #lobby{padding:18px 16px;border-radius:17px}
- #lobby h2{font-size:23px}
- #lobby .rules{font-size:15px;line-height:1.48}
- #lobby .row{display:flex;flex-direction:column;align-items:stretch;gap:9px}
- #lobby input,#lobby button{width:100%;min-height:48px;font-size:14px;padding:12px}
- #fleetPreview{min-height:0;border-radius:17px}
- #fleetPreview .preview-ocean.lobby-scene{min-height:230px;padding:14px 10px}
- .fleet-wait{padding:16px 12px;gap:9px}
- .fleet-wait strong{font-size:26px}
- .fleet-wait-kicker,.fleet-wait-rule{font-size:10px;letter-spacing:.8px}
- .fleet-wait span:last-of-type{font-size:14px}
- footer{font-size:13px;line-height:1.4;letter-spacing:1px;padding:16px 10px calc(24px + env(safe-area-inset-bottom))}
-}
-
-/* Centered game-setup card and simplified host action label. */
-.setup-panel{justify-self:center;align-self:center;width:100%;max-width:620px}
-.setup-title{width:100%;margin:-4px 0 14px;padding:8px 12px;text-align:center;border:1px solid rgba(119,224,255,.85);border-radius:9px;background:linear-gradient(90deg,rgba(0,22,48,.94),rgba(8,93,143,.92),rgba(0,22,48,.94));color:#f5fbff;font-size:clamp(18px,2vw,25px);font-weight:1000;letter-spacing:2.5px;text-shadow:0 2px 6px #001329,0 0 12px #00aaff;box-shadow:0 0 16px rgba(0,174,255,.22)}
-#lobby h2{text-align:center}
-@media(max-width:850px){.setup-panel{max-width:560px;justify-self:center;align-self:start}}
-@media(max-width:560px){.setup-title{font-size:18px;margin:-2px 0 12px;padding:7px 8px;letter-spacing:2px}}
-
-/* Final mobile form sizing: prevent flex-basis from becoming control height. */
-#lobby.setup-panel{width:100%;max-width:760px;margin-inline:auto;justify-self:center;align-self:center;padding:clamp(18px,3vw,30px)}
-#lobby .row{display:flex;flex-direction:column;align-items:stretch;gap:12px;flex-wrap:nowrap}
-#lobby .row input,#lobby .row button{display:block;flex:0 0 58px;width:100%;height:58px;min-height:58px;max-height:58px;box-sizing:border-box;padding:12px 18px;font-size:16px;line-height:1.2;border-radius:12px}
-#lobby .row button{font-size:17px;font-weight:900}
-#lobby .row+.row{margin-top:12px!important}
-#lobby .status{margin:16px 0 8px}
-#fleetPreview .preview-ocean.lobby-scene{min-height:280px;background-image:linear-gradient(180deg,rgba(0,18,42,.12),rgba(0,13,32,.28)),url("naval-ocean.svg");background-position:center;background-size:cover}
-@media(max-width:850px){
- .landing-layout{grid-template-columns:minmax(0,1fr)!important;max-width:760px;margin:0 auto;gap:16px;align-items:start}
- #lobby.setup-panel{max-width:760px;justify-self:center;align-self:start;padding:20px 18px}
- #lobby h2{font-size:clamp(23px,5vw,29px);line-height:1.2;margin-bottom:12px}
- #lobby .rules{font-size:16px;line-height:1.5;margin:10px 0 16px}
- #lobby .muted.small{font-size:14px;line-height:1.5}
- #fleetPreview{min-height:0;width:100%}
- #fleetPreview .preview-ocean.lobby-scene{min-height:220px}
-}
-@media(max-width:560px){
- main{width:100%;padding:10px 12px 20px}
- #lobby.setup-panel{width:100%;max-width:100%;padding:18px 16px;border-radius:17px}
- .setup-title{font-size:18px;margin:0 0 12px;padding:8px}
- #lobby h2{font-size:23px;text-align:center}
- #lobby .rules{font-size:15px;line-height:1.48}
- #lobby .row input,#lobby .row button{flex:0 0 56px;height:56px;min-height:56px;max-height:56px;font-size:15px;padding:12px 14px}
- #lobby .row button{font-size:16px}
+ .cinematic-hero{min-height:clamp(210px,62vw,280px);padding:32px 10px 18px;background-position:center 38%}
+ .cinematic-hero h1{font-size:clamp(37px,10vw,52px);letter-spacing:1.5px}
+ .cinematic-hero p{font-size:14px;letter-spacing:2px;margin-top:9px;padding:4px 18px}
+ main{padding:12px 12px 18px}
+ .landing-layout{gap:13px}
+ #lobby.setup-panel{padding:18px 16px;border-radius:17px}
+ .setup-title{font-size:18px;margin-bottom:13px;padding:8px;letter-spacing:2px}
+ #lobby h2{font-size:23px;line-height:1.2;margin-bottom:10px}
+ #lobby .rules{font-size:15px;line-height:1.48;margin:8px 0 15px}
+ #lobby .row{gap:9px}
+ #lobby .row input{height:54px;min-height:54px;max-height:54px;flex-basis:54px;font-size:16px;padding:12px 14px}
+ #lobby .row button{height:54px;min-height:54px;max-height:54px;flex-basis:54px;font-size:16px}
+ #lobby .status{margin:15px 0 6px;font-size:16px}
+ #lobby .muted.small{font-size:13px;line-height:1.45}
+ #fleetPreview{min-height:190px;border-radius:17px}
  #fleetPreview .preview-ocean.lobby-scene{min-height:190px}
- footer{font-size:13px;line-height:1.4;letter-spacing:1px;padding:16px 10px calc(24px + env(safe-area-inset-bottom))}
+ footer{font-size:13px;line-height:1.4;letter-spacing:1px;padding:15px 10px calc(22px + env(safe-area-inset-bottom))}
+ #game{padding:13px 10px}.players{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.player{padding:9px;font-size:13px}.grid{gap:6px}.cell{border-radius:9px}
 }
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
