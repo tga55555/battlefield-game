@@ -10,30 +10,8 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradi
 .cinematic-hero h1{margin:0;font-size:clamp(42px,7vw,86px);line-height:1;font-weight:1000;letter-spacing:clamp(2px,.7vw,8px);color:#f5fbff;-webkit-text-stroke:1px #285d8a;text-shadow:0 4px 0 #06284b,0 7px 0 #03172d,0 0 18px #3bd4ff,0 0 38px #087ec9}
 .cinematic-hero p{display:inline-block;margin:12px 0 0;padding:5px 26px;border-top:2px solid #8ceaff;border-bottom:2px solid #8ceaff;font-size:clamp(15px,2vw,23px);font-weight:1000;letter-spacing:3px;color:#fff;text-shadow:0 2px 8px #00152d,0 0 14px #00aaff}
 main{width:min(1320px,96vw);margin:0 auto;padding:22px 14px 28px;position:relative;z-index:1}
-.landing-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:stretch}
-.panel,#fleetPreview{border:2px solid rgba(80,215,255,.95);border-radius:20px;background:linear-gradient(145deg,rgba(0,23,51,.9),rgba(0,43,75,.82));box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px rgba(0,10,30,.7),0 0 24px rgba(0,174,255,.32),0 16px 42px rgba(0,5,20,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-#lobby.setup-panel{width:100%;max-width:640px;margin:0 auto;padding:clamp(20px,2.6vw,34px);justify-self:center;align-self:center}
-.setup-title{width:100%;margin:0 0 18px;padding:10px 12px;text-align:center;border:1px solid rgba(119,224,255,.9);border-radius:10px;background:linear-gradient(90deg,rgba(0,22,48,.96),rgba(8,93,143,.94),rgba(0,22,48,.96));color:#f5fbff;font-size:clamp(19px,2vw,25px);font-weight:1000;letter-spacing:2.5px;text-shadow:0 2px 6px #001329,0 0 12px #00aaff}
-#lobby h2,#game h2{margin:0 0 14px;text-align:center;color:#fff0a8;font-size:clamp(23px,2.4vw,31px);font-weight:950;text-shadow:0 2px 8px #00152c,0 0 14px #ff9f2d}
-.rules{color:#e9f8ff;line-height:1.5}
-#lobby .rules{font-size:clamp(15px,1.2vw,17px);margin:12px 0 20px}
-#lobby .row{display:flex;flex-direction:column;align-items:stretch;gap:11px;flex-wrap:nowrap;margin:0}
-#lobby .row+.row{margin-top:13px!important}
-input,select,button{font:inherit;color:#f7fcff;border:1px solid #4bbfe8;border-radius:11px;padding:13px 15px;background:rgba(1,18,39,.96);min-width:0;box-sizing:border-box}
-#lobby .row input{display:block;flex:0 0 56px;width:100%;height:56px;min-height:56px;max-height:56px;font-size:16px;line-height:1.2;box-shadow:inset 0 2px 8px #0008}
-input::placeholder{color:#a9cddd;opacity:1}
-button{cursor:pointer;font-weight:900;letter-spacing:.3px;background:linear-gradient(180deg,#159ed8,#07558e);border:1px solid #9aeaff;box-shadow:0 3px 0 #043a67,0 0 15px #078dd766;text-shadow:0 1px 3px #00233f;transition:filter .15s,transform .15s}
-#lobby .row button{display:block;flex:0 0 56px;width:100%;height:56px;min-height:56px;max-height:56px;padding:10px 14px;font-size:17px;line-height:1.2}
-button:hover:not(:disabled){filter:brightness(1.18);transform:translateY(-1px)}
-button:disabled{opacity:.42;cursor:not-allowed}
-button.gold{background:linear-gradient(180deg,#ffd05d,#e77913 70%,#9d4308);border:1px solid #ffe6a0;color:#fff;text-shadow:0 2px 3px #663000;box-shadow:0 3px 0 #713506,0 0 18px #ff9b2780}
-#host,#join{min-height:56px}
-#lobby .status,.status{color:#ffe28a;font-weight:850;text-shadow:0 1px 5px #00152d;margin:17px 0 8px}
-#lobby .small,.muted{color:#c7e8f6}
-#fleetPreview{padding:0;overflow:hidden;min-height:440px;display:block;position:relative;background:linear-gradient(180deg,rgba(0,20,44,.08),rgba(0,10,28,.4)),url("naval-cinematic-header.jpg") center/cover no-repeat}
-#fleetPreview .preview-head,#fleetPreview .preview-note{display:none}
-#fleetPreview .preview-ocean.lobby-scene{min-height:440px;width:100%;background:linear-gradient(180deg,transparent,rgba(0,16,38,.25));}
-footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px 12px calc(26px + env(safe-area-inset-bottom));font-size:clamp(14px,2vw,22px);font-weight:1000;letter-spacing:2px;color:#f5fbff;text-shadow:0 2px 7px #001329,0 0 14px #18bfff,0 0 25px #087ec9;background:linear-gradient(180deg,transparent,rgba(0,9,28,.68))}
+.landing-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start;justify-items:center}
+.panel,footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px 12px calc(26px + env(safe-area-inset-bottom));font-size:clamp(14px,2vw,22px);font-weight:1000;letter-spacing:2px;color:#f5fbff;text-shadow:0 2px 7px #001329,0 0 14px #18bfff,0 0 25px #087ec9;background:linear-gradient(180deg,transparent,rgba(0,9,28,.68))}
 #game{max-width:1100px;margin:20px auto;padding:clamp(15px,2vw,28px)}
 #game h3{color:#dff8ff;font-size:22px}
 .players{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
@@ -55,8 +33,6 @@ footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px
  main{width:100%;max-width:720px;padding:16px 14px 22px}
  .landing-layout{grid-template-columns:minmax(0,1fr);gap:16px}
  #lobby.setup-panel{max-width:100%;padding:22px 20px}
- #fleetPreview{min-height:210px}
- #fleetPreview .preview-ocean.lobby-scene{min-height:210px}
  #game{margin:14px auto}
 }
 @media(max-width:560px){
@@ -64,7 +40,7 @@ footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px
  .cinematic-hero h1{font-size:clamp(37px,10vw,52px);letter-spacing:1.5px}
  .cinematic-hero p{font-size:14px;letter-spacing:2px;margin-top:9px;padding:4px 18px}
  main{padding:12px 12px 18px}
- .landing-layout{gap:13px}
+ .landing-layout{gap:0}
  #lobby.setup-panel{padding:18px 16px;border-radius:17px}
  .setup-title{font-size:18px;margin-bottom:13px;padding:8px;letter-spacing:2px}
  #lobby h2{font-size:23px;line-height:1.2;margin-bottom:10px}
@@ -74,22 +50,19 @@ footer{position:relative;z-index:1;text-align:center;margin:8px 0 0;padding:18px
  #lobby .row button{height:54px;min-height:54px;max-height:54px;flex-basis:54px;font-size:16px}
  #lobby .status{margin:15px 0 6px;font-size:16px}
  #lobby .muted.small{font-size:13px;line-height:1.45}
- #fleetPreview{min-height:190px;border-radius:17px}
- #fleetPreview .preview-ocean.lobby-scene{min-height:190px}
  footer{font-size:13px;line-height:1.4;letter-spacing:1px;padding:15px 10px calc(22px + env(safe-area-inset-bottom))}
  #game{padding:13px 10px}.players{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.player{padding:9px;font-size:13px}.grid{gap:6px}.cell{border-radius:9px}
 }
 
 /* Photorealistic generated hero banner; live controls remain real HTML. */
 body{background-image:linear-gradient(180deg,rgba(0,8,22,.15),rgba(0,12,30,.62) 55%,rgba(0,8,24,.94)),url("naval-ocean.svg");background-position:center top;background-size:cover;background-attachment:scroll}
-.cinematic-hero{min-height:clamp(170px,22vw,300px);padding:0;background-position:center center;background-size:cover;background-repeat:no-repeat;display:block;position:relative}
+.cinematic-hero{height:clamp(190px,27vw,310px);min-height:0;padding:0;background-position:center center;background-size:cover;background-repeat:no-repeat;display:block;position:relative}
 .cinematic-hero h1,.cinematic-hero p{display:none}
-@media(max-width:560px){.cinematic-hero{min-height:170px;max-height:220px}}
-#fleetPreview{background:linear-gradient(180deg,rgba(0,20,44,.1),rgba(0,10,28,.45)),url("naval-ocean.svg") center/cover no-repeat}
+@media(max-width:560px){.cinematic-hero{height:190px;min-height:190px;max-height:190px;background-position:center center}main{max-width:680px;padding:14px 12px 22px}#lobby.setup-panel{max-width:100%;padding:20px 17px}.setup-title{margin-bottom:14px}#lobby .rules{font-size:15px;line-height:1.48}footer{margin-top:4px}}
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel setup-panel" id="lobby"><div class="setup-title">GAME SETUP</div><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses Start Challenge. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: the host taps Create room once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
-<aside id="fleetPreview" aria-label="Decorative fleet preview"><div class="preview-head"><h2>PLACE YOUR SHIPS</h2><p>FOUR PLAYERS · FOUR HIDDEN FLEETS</p></div><div class="preview-ocean lobby-scene" role="img" aria-label="Cinematic ocean scene"></div></aside>
+
 </div>
 <section class="panel hidden" id="game"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">Final ship challenge</h2><div class="muted small">Room: <b id="roomLabel"></b></div></div><button class="gold" id="copy">Copy invite link</button><button id="reconnect" class="hidden">Reconnect</button></div><div class="status" id="status">Waiting for players…</div><div class="players" id="players"></div><div id="placeArea"><h3>Hide your ship</h3><p class="rules small" id="placeHint">Choose exactly one square on the 3×3 ocean. You can lock in only one ship, and its position cannot be changed afterward.</p><div class="grid" id="placeGrid"></div><button id="finishPlacement" class="gold" disabled>Lock in my ship</button></div>
 <div id="rankPanel" class="hidden"><h3>Host controls · Start battle</h3><p class="rules small">Enter the official TikTok rankings below. The lowest-ranked player is the target; each higher-ranked player gets one guess in order.</p><p id="rankWait" class="status">Waiting for all players to join…</p><div class="players" id="rankPlayers" style="margin:12px 0"></div><div id="rankChoices"></div><p id="rankReady" class="muted small">Select each player’s finishing position. The game starts once every ship is locked.</p><button id="startChallenge" class="gold" disabled>⚓ BEGIN GAME 🚢</button></div>
