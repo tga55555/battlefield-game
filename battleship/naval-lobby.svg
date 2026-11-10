@@ -1,79 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1800" preserveAspectRatio="xMidYMid slice">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" preserveAspectRatio="xMidYMid slice">
 <defs>
- <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#03122f"/><stop offset=".25" stop-color="#064b91"/><stop offset=".48" stop-color="#087fc1"/><stop offset=".68" stop-color="#f36a32"/><stop offset="1" stop-color="#063b68"/></linearGradient>
- <linearGradient id="water" x2="0" y2="1"><stop stop-color="#087fb5"/><stop offset=".25" stop-color="#07558c"/><stop offset=".7" stop-color="#032d58"/><stop offset="1" stop-color="#01172f"/></linearGradient>
- <linearGradient id="steel" x2="0" y2="1"><stop stop-color="#f0f8ff"/><stop offset=".18" stop-color="#91b2c9"/><stop offset=".52" stop-color="#405f7c"/><stop offset="1" stop-color="#071c39"/></linearGradient>
- <linearGradient id="deck" x2="0" y2="1"><stop stop-color="#a9c6d8"/><stop offset="1" stop-color="#243e5b"/></linearGradient>
- <radialGradient id="fire"><stop stop-color="#fffbd0"/><stop offset=".18" stop-color="#fff06b"/><stop offset=".42" stop-color="#ff8a20"/><stop offset=".72" stop-color="#ed3b12" stop-opacity=".65"/><stop offset="1" stop-color="#f32d18" stop-opacity="0"/></radialGradient>
- <radialGradient id="sun"><stop stop-color="#fff8ce" stop-opacity=".95"/><stop offset=".28" stop-color="#ffd16c" stop-opacity=".65"/><stop offset="1" stop-color="#ff7b31" stop-opacity="0"/></radialGradient>
- <filter id="glow"><feGaussianBlur stdDeviation="20"/></filter><filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
- <pattern id="stars" width="90" height="100" patternUnits="userSpaceOnUse"><circle cx="12" cy="18" r="2" fill="#fff" opacity=".7"/><circle cx="58" cy="52" r="1.4" fill="#d9f4ff" opacity=".65"/><circle cx="34" cy="86" r="1" fill="#fff" opacity=".55"/></pattern>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#061b40"/><stop offset=".42" stop-color="#176da7"/><stop offset=".7" stop-color="#f08a45"/><stop offset="1" stop-color="#063c68"/></linearGradient>
+ <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#168ec0"/><stop offset=".35" stop-color="#07578d"/><stop offset="1" stop-color="#01172f"/></linearGradient>
+ <linearGradient id="steel" x2="0" y2="1"><stop stop-color="#d9eaf4"/><stop offset=".3" stop-color="#647f98"/><stop offset=".72" stop-color="#263f5a"/><stop offset="1" stop-color="#07182e"/></linearGradient>
+ <radialGradient id="blast"><stop stop-color="#fff8b0"/><stop offset=".25" stop-color="#ffbd36"/><stop offset=".6" stop-color="#f34b17" stop-opacity=".9"/><stop offset="1" stop-color="#e52b17" stop-opacity="0"/></radialGradient>
+ <linearGradient id="wave" x2="0" y2="1"><stop stop-color="#a9f4ff" stop-opacity=".8"/><stop offset="1" stop-color="#28a9d6" stop-opacity="0"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="18"/></filter>
 </defs>
-<rect width="900" height="1800" fill="#031a3a"/>
-<path d="M0 0H900V590Q700 550 450 600T0 580Z" fill="url(#sky)"/>
-<rect width="900" height="470" fill="url(#stars)" opacity=".65"/>
-<circle cx="450" cy="360" r="280" fill="url(#sun)"/>
-<circle cx="450" cy="360" r="125" fill="#ff9b48" opacity=".45" filter="url(#glow)"/>
-<!-- distant smoke and burning horizon -->
-<g fill="#101e36" opacity=".55" filter="url(#soft)"><path d="M-40 390Q25 240 130 330Q155 180 250 300Q310 230 355 380Z"/><path d="M550 380Q590 220 690 300Q740 165 810 290Q875 220 950 380Z"/></g>
-<g><circle cx="92" cy="365" r="142" fill="url(#fire)"/><circle cx="815" cy="355" r="155" fill="url(#fire)"/><path d="M38 438Q-8 350 42 288Q45 355 90 310Q74 380 133 344Q130 408 176 391Q130 477 38 438Z" fill="#ff741e" opacity=".9"/><path d="M760 430Q735 340 790 275Q786 350 833 308Q812 385 870 350Q868 430 760 430Z" fill="#ff7a20" opacity=".9"/></g>
-<!-- attack aircraft -->
-<g fill="#071d39" stroke="#c8e7f7" stroke-width="5" stroke-linejoin="round">
- <path d="M90 185l95-13 92 13-86 18-18 60-13 4-6-58-64-24Z"/>
- <path d="M682 160l94-10 90 17-85 15-22 65-13 2-4-61-60-28Z"/>
- <path d="M320 130l65-8 68 12-61 13-15 45-10 2-4-44-43-20Z"/>
+<rect width="1600" height="1100" fill="url(#sky)"/>
+<g fill="#f5c38b" opacity=".24"><path d="M0 160L170 40l170 70 180-80 180 110 190-90 160 75 190-80 180 90 180-70v220H0z"/><path d="M0 300l230-130 210 85 180-100 230 120 210-90 180 80 200-120 160 70v170H0z" fill="#fff"/></g>
+<g opacity=".85"><circle cx="910" cy="430" r="170" fill="url(#blast)"/><circle cx="910" cy="430" r="95" fill="#ff9a2e" opacity=".3" filter="url(#glow)"/><path d="M820 430q-70-120 20-180 20 100 80 90 10-100 70-140 20 110 70 150 60 60-10 170z" fill="#2d3444" opacity=".7"/></g>
+<g fill="#fff" opacity=".85"><path d="M0 440q120-80 250 0t250 0 250 0 250 0 250 0 250 0 250 0v80H0z" opacity=".12"/><path d="M0 500q120-45 240 0t240 0 240 0 240 0 240 0 240 0 160 0v55H0z" opacity=".14"/></g>
+<rect y="565" width="1600" height="535" fill="url(#sea)"/>
+<g opacity=".6" fill="none" stroke="#72dfff" stroke-width="8"><path d="M0 660q150-55 300 0t300 0 300 0 300 0 300 0 300 0"/><path d="M0 770q130-48 260 0t260 0 260 0 260 0 260 0 260 0"/><path d="M0 920q180-50 360 0t360 0 360 0 360 0 160 0"/></g>
+<!-- foreground battleship -->
+<g transform="translate(60 250)">
+ <path d="M0 360L80 300 550 280 790 320 680 470 180 510 35 430z" fill="#0a1d32" stroke="#9ab6c8" stroke-width="8"/>
+ <path d="M50 340L170 285 580 280 720 325 620 405 160 438z" fill="url(#steel)" stroke="#c7e1ed" stroke-width="7"/>
+ <path d="M180 295l20-90h60v90m-20-95v-50h15v50m95 95 20-115h80v115m-42-115v-65h16v65m105 110 18-90h65v90" fill="#526d83" stroke="#c8e0ed" stroke-width="7"/>
+ <g fill="#9db7c8" stroke="#253d56" stroke-width="5"><rect x="100" y="275" width="125" height="28" rx="8"/><rect x="300" y="260" width="140" height="30" rx="8"/><rect x="500" y="285" width="110" height="25" rx="8"/></g>
+ <g stroke="#d9eff8" stroke-width="10" stroke-linecap="round"><path d="M130 275v-70m-22 22h45m165 35v-85m-25 28h55m185 45v-60m-20 18h42"/></g>
+ <text x="350" y="380" text-anchor="middle" font-family="Arial Black,Arial" font-size="62" font-weight="900" fill="#f5fbff" stroke="#183550" stroke-width="5" paint-order="stroke">#TeamSmoke</text>
+ <text x="680" y="390" font-family="Arial Black,Arial" font-size="55" fill="#e5f6ff" stroke="#17334c" stroke-width="5" paint-order="stroke">63</text>
+ <path d="M0 420q100 100 240 80t240 15 200-10l-80 90H70z" fill="#e8fbff" opacity=".6"/>
 </g>
-<g fill="#a8e9ff" opacity=".8"><path d="M176 195l70 3-66 8Z"/><path d="M766 169l70 5-68 8Z"/><path d="M380 137l46 5-44 6Z"/></g>
-<!-- sea horizon and distant escort silhouettes -->
-<path d="M0 520Q170 485 330 525T650 515T900 500V1800H0Z" fill="url(#water)"/>
-<g fill="#102e50" stroke="#9cc8e2" stroke-width="4" opacity=".9"><path d="M22 515l70-24 88 8 48 25-35 18H38Z"/><path d="M90 497v-46h19v46m-9-46v-28h8v28"/><path d="M660 510l75-27 90 10 55 26-38 18H680Z"/><path d="M730 490v-48h20v48m-10-48v-25h8v25"/></g>
-<!-- main battleship with detailed bow and superstructure -->
-<g>
- <path d="M65 470L155 440L258 422L335 394L386 355L420 315L451 300L484 326L525 365L590 392L695 421L810 457L866 485L832 528L760 550L158 550L92 527Z" fill="url(#steel)" stroke="#e4f6ff" stroke-width="8" stroke-linejoin="round"/>
- <path d="M90 482L190 462L285 438L360 410L421 368L459 351L510 380L590 409L700 440L838 489" fill="none" stroke="#d9f1fc" stroke-width="7" opacity=".9"/>
- <path d="M140 525Q420 562 820 518" fill="none" stroke="#071d38" stroke-width="13"/>
- <path d="M255 421L330 382L382 348L458 343L522 375L604 411L566 439L306 443Z" fill="url(#deck)" stroke="#1c3855" stroke-width="6"/>
- <!-- forward turret -->
- <path d="M202 446L218 402L253 390L288 404L295 447Z" fill="#c3d6e2" stroke="#294b69" stroke-width="6"/>
- <path d="M246 397L252 365L265 365L270 400L317 380L322 390L270 414" fill="#eaf7ff" stroke="#34546f" stroke-width="5"/>
- <!-- bridge -->
- <path d="M380 390V286L408 250H486L511 289V411Z" fill="#a9c2d2" stroke="#213e5c" stroke-width="7"/>
- <path d="M399 291H494V317H399Z" fill="#183754"/>
- <g fill="#a9edff"><rect x="407" y="295" width="17" height="14"/><rect x="433" y="295" width="17" height="14"/><rect x="459" y="295" width="17" height="14"/></g>
- <path d="M421 251V205H467V251M440 205V164H453V205" fill="#7f9eb3" stroke="#1e3b58" stroke-width="6"/>
- <path d="M446 165V105M446 132L365 105M446 139L526 103M446 117L488 78" stroke="#e9f8ff" stroke-width="6" fill="none" stroke-linecap="round"/>
- <path d="M363 105l-20-13m183 11l18-15" stroke="#effaff" stroke-width="4"/>
- <!-- rear turret -->
- <path d="M584 430L599 390L636 379L670 394L677 449Z" fill="#bdcfda" stroke="#294b69" stroke-width="6"/>
- <path d="M631 387L637 357L650 357L654 391L700 373L705 383L654 406" fill="#eaf7ff" stroke="#34546f" stroke-width="5"/>
- <!-- stacks, deck gear, railings -->
- <path d="M335 409V337H365V409M526 416V337H557V426" fill="#526f87" stroke="#203d5b" stroke-width="6"/>
- <path d="M333 337h34m157 0h35" stroke="#d8edf7" stroke-width="6"/>
- <path d="M360 345v-42h22v42m139 2v-47h23v47" fill="#8ca8bb" stroke="#294965" stroke-width="5"/>
- <g fill="none" stroke="#eaf8ff" stroke-width="4" opacity=".9"><path d="M283 423l42-22 34 2m202-10l62 20 50 22"/><path d="M397 280h100m-90-12h80m-63-14h45"/></g>
- <g fill="#ffd88d" stroke="#203d58" stroke-width="2"><circle cx="168" cy="493" r="5"/><circle cx="193" cy="486" r="5"/><circle cx="736" cy="480" r="5"/><circle cx="763" cy="490" r="5"/></g>
-</g>
-<!-- exploding impact plumes behind ship -->
-<g opacity=".8"><path d="M35 500Q-5 438 45 395Q40 462 92 420Q70 490 130 460Q120 525 35 500Z" fill="#ff7b1c"/><path d="M780 490Q745 425 800 390Q785 455 850 425Q825 495 880 465Q865 525 780 490Z" fill="#ff7b1c"/></g>
-<!-- dramatic ocean foam and bright wave bands -->
-<g fill="none" stroke-linecap="round">
- <path d="M-40 575q90-58 180 0t180 0t180 0t180 0t180 0t180 0" stroke="#f0fdff" stroke-width="20" opacity=".86"/>
- <path d="M-40 625q95-48 190 0t190 0t190 0t190 0t190 0" stroke="#5ce4ff" stroke-width="12" opacity=".8"/>
- <path d="M-40 760q100-65 200 0t200 0t200 0t200 0t200 0" stroke="#c8f6ff" stroke-width="15" opacity=".72"/>
- <path d="M-40 920q85-60 170 0t170 0t170 0t170 0t170 0t170 0" stroke="#a8efff" stroke-width="13" opacity=".68"/>
- <path d="M-40 1110q105-75 210 0t210 0t210 0t210 0t210 0" stroke="#e6fbff" stroke-width="17" opacity=".78"/>
- <path d="M-40 1310q100-66 200 0t200 0t200 0t200 0t200 0" stroke="#61dfff" stroke-width="12" opacity=".72"/>
- <path d="M-40 1510q95-64 190 0t190 0t190 0t190 0t190 0" stroke="#d9f9ff" stroke-width="16" opacity=".72"/>
- <path d="M-40 1690q110-70 220 0t220 0t220 0t220 0t220 0" stroke="#71e1ff" stroke-width="12" opacity=".65"/>
-</g>
-<g fill="none" stroke="#f3fdff" stroke-width="5" opacity=".66"><path d="M25 710l130-23m55 25l115-20m85 24l130-24m70 25l135-20m-610 230l140-22m70 24l120-20m90 24l145-22m-565 235l135-22m80 22l135-20m70 22l145-20m-565 250l130-20m70 22l130-20m80 22l140-20"/></g>
-<g fill="#f3fdff" opacity=".85"><path d="M75 745l25-36 29 40-30-10Z"/><path d="M700 850l29-38 32 41-34-11Z"/><path d="M280 1040l24-34 30 38-30-10Z"/><path d="M100 1370l30-40 32 43-34-12Z"/><path d="M760 1580l26-36 30 40-32-10Z"/></g>
-<rect width="900" height="1800" fill="none" stroke="#6edfff" stroke-opacity=".12" stroke-width="18"/>
-
-<g transform="rotate(-7 450 492)">
- <text x="450" y="505" text-anchor="middle" textLength="245" lengthAdjust="spacingAndGlyphs"
-  font-family="Arial Black,Arial,sans-serif" font-size="39" font-weight="900"
-  fill="#f3fbff" stroke="#12395c" stroke-width="3" paint-order="stroke"
-  style="filter:drop-shadow(0 2px 5px #001326)">#TeamSmoke</text>
-</g>
+<!-- distant ship -->
+<g transform="translate(1110 500) scale(.55)"><path d="M0 150l80-45h420l110 45-80 90H70z" fill="#162d46" stroke="#9fc4d8" stroke-width="8"/><path d="M160 110V0h100v110m-50-110v-55m160 165V20h70v90" fill="#657f94" stroke="#d1e5ee" stroke-width="8"/></g>
+<!-- aircraft -->
+<g fill="#182c45" stroke="#b5d1e1" stroke-width="5"><path d="M1170 190l115-35 55-110 32 4-12 115 145 35 8 28-160 0-80 90-27-3 28-92-112-5z"/><path d="M680 250l70-22 35-65 20 3-8 65 90 18 4 18-95 2-50 53-18-2 17-55-68-2z"/></g>
+<g fill="#eafaff" opacity=".75"><path d="M1185 205l70-16 45 10-50 10z"/><path d="M700 258l42-10 26 7-32 9z"/></g>
+<!-- spray -->
+<g fill="url(#wave)" opacity=".8"><path d="M0 640q100-130 210 0t220 0 220 0 220 0 220 0 220 0 220 0v150H0z"/><path d="M0 900q100-100 200 0t200 0 200 0 200 0 200 0 200 0 200 0 200 0v140H0z"/></g>
+<g fill="#e6faff" opacity=".5"><path d="M0 630q80-70 160 0t160 0 160 0 160 0 160 0 160 0 160 0 160 0 160 0" fill="none" stroke="#e6faff" stroke-width="10"/><path d="M0 840q100-60 200 0t200 0 200 0 200 0 200 0 200 0 200 0 200 0" fill="none" stroke="#e6faff" stroke-width="8"/></g>
 </svg>
