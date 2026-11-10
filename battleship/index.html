@@ -421,6 +421,68 @@ footer{
  footer{padding:18px;font-size:18px}
 }
 
+
+/* === FINAL REFERENCE-MATCH PASS (presentation only; game logic untouched) === */
+html,body{background-color:#031a39}
+body{
+ min-height:100vh;min-height:100svh;
+ background-image:linear-gradient(180deg,rgba(0,10,28,.06) 0%,rgba(0,18,42,.16) 58%,rgba(0,10,28,.34) 100%),url("naval-lobby.svg");
+ background-position:center top,center top;
+ background-size:100% 100%,100% 100%;
+ background-repeat:no-repeat,no-repeat;
+ background-attachment:scroll,scroll;
+}
+header{padding:7px 8px 4px;position:relative;z-index:2}
+header h1{font-size:clamp(28px,7vw,42px);line-height:1;letter-spacing:2px;color:#f5fbff;text-shadow:0 2px 0 #174d79,0 4px 12px #001329,0 0 20px #55dcff}
+header p{margin:3px 0 0;font-size:clamp(12px,3.3vw,16px);font-weight:950;letter-spacing:.6px;color:#fff;text-shadow:0 2px 7px #001329}
+main{width:100%;max-width:460px;padding:5px 9px;position:relative;z-index:1}
+#lobby.panel,#game.panel{
+ background:linear-gradient(145deg,rgba(0,20,47,.78),rgba(0,32,59,.68));
+ border:1.5px solid rgba(85,220,255,.96);
+ border-radius:14px;
+ padding:10px;
+ margin:5px 0;
+ box-shadow:0 0 0 1px rgba(255,255,255,.13) inset,0 0 17px rgba(0,180,255,.36),0 8px 24px rgba(0,5,20,.48);
+ -webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px);
+}
+#lobby h2{font-size:clamp(17px,4.8vw,22px);line-height:1.12;margin:2px 0 7px;color:#ffdf55;text-shadow:0 2px 6px #00172e,0 0 11px #ff982b}
+#lobby .rules{font-size:clamp(11px,3vw,13px);line-height:1.25;margin:6px 0 9px;color:#f6fbff}
+#lobby .small{font-size:10px;line-height:1.2;margin:7px 0 1px;color:#e6f8ff}
+#lobby .row{display:flex;gap:6px;flex-wrap:nowrap;margin:6px 0}
+#lobby input,#lobby button{min-width:0;min-height:37px;padding:8px 9px;border-radius:8px;font-size:clamp(10px,2.8vw,12px)}
+#lobby input{flex:1 1 42%;width:42%;background:rgba(0,17,39,.92);border:1.5px solid #55dfff}
+#lobby button{flex:1 1 auto;background:linear-gradient(180deg,#0a83b4,#06466f);border:1px solid #5bdfff;color:#fff;box-shadow:0 0 8px #24bfff55;white-space:nowrap}
+#lobby button.gold,button.gold{background:linear-gradient(180deg,#ffcf35,#ff8a00);border:2px solid #fff0a2;color:#09284b;text-shadow:none}
+#game.panel{padding:10px}
+#game h2{font-size:clamp(18px,5vw,23px);margin:3px 0 7px}
+#game h3{font-size:clamp(15px,4vw,19px);margin:8px 0}
+#game .rules,#game p{font-size:clamp(11px,3vw,13px);line-height:1.25}
+#game .grid{width:100%;max-width:330px;gap:5px;margin:9px auto}
+#game .cell{
+ aspect-ratio:1;min-width:0;padding:0;overflow:hidden;border-radius:9px;border:2px solid #54d9ff;
+ background-color:#087bb3;
+ background-image:linear-gradient(180deg,rgba(0,170,235,.02),rgba(0,20,55,.06)),url("naval-ocean.svg");
+ background-size:cover;background-position:center;
+ box-shadow:inset 0 0 12px rgba(225,251,255,.2),0 0 8px rgba(0,180,255,.3);
+}
+#game .cell.selected{border-color:#fff0a1;box-shadow:0 0 0 2px #ffdc78,0 0 16px #40dcff}
+#game .cell .coord{font-size:clamp(10px,2.8vw,13px);top:4px;left:5px}
+#game .players{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+#game .player{padding:6px;font-size:11px;background:rgba(5,51,81,.9);border-color:#55cffa}
+#game button{font-size:12px;padding:8px 11px;border-radius:8px}
+footer{padding:10px 8px 13px;margin-top:auto;font-size:clamp(11px,3vw,14px);background:linear-gradient(180deg,transparent,rgba(0,10,28,.68));letter-spacing:1px}
+@media(min-width:700px){
+ body{background-size:100% 100%,cover}
+ main{max-width:760px;padding:12px 18px}
+ #lobby.panel,#game.panel{padding:16px}
+ #lobby h2{font-size:25px}
+ #lobby .rules{font-size:14px}
+ #lobby .small{font-size:12px}
+ #lobby input,#lobby button{font-size:13px;min-height:42px}
+ #game .grid{max-width:430px;gap:8px}
+ #game .player{font-size:13px;padding:9px}
+}
+
 </style></head><body><header><h1>BATTLESHIP</h1><p>ONE HIDDEN SHIP, SAIL OR SINK</p></header><main>
 <section class="panel" id="lobby"><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses Start Challenge. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM (HOST ONLY)</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: the host taps Create room once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
 <section class="panel hidden" id="game"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">Final ship challenge</h2><div class="muted small">Room: <b id="roomLabel"></b></div></div><button class="gold" id="copy">Copy invite link</button><button id="reconnect" class="hidden">Reconnect</button></div><div class="status" id="status">Waiting for players…</div><div class="players" id="players"></div><div id="placeArea"><h3>Hide your ship</h3><p class="rules small" id="placeHint">Choose exactly one square on the 3×3 ocean. You can lock in only one ship, and its position cannot be changed afterward.</p><div class="grid" id="placeGrid"></div><button id="finishPlacement" class="gold" disabled>Lock in my ship</button></div>
