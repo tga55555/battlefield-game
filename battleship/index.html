@@ -228,10 +228,19 @@ footer{flex:0 0 auto;width:100%;margin-top:auto}
 }
 
  
- /* Keep the hero artwork clear of the fake setup tabs baked into the banner image. */
- .cinematic-hero{background-size:118% 118%!important;background-position:center top!important}
+ /* Show the complete cinematic artwork: full ship hull and the waves beneath it.
+    Do not zoom/crop the banner or layer decorative grid effects over the image. */
+ .cinematic-hero{
+  background-size:100% 100%!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-color:#03172d;
+ }
  @media(max-width:560px){
-  .cinematic-hero{background-size:auto 118%!important;background-position:center top!important}
+  .cinematic-hero{
+   background-size:100% 100%!important;
+   background-position:center center!important;
+  }
  }
  </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
@@ -277,7 +286,7 @@ const originalRender=render;render=function(s){originalRender(s);if(isHost&&(pha
    return (await r.text()).trim();
   }));
   document.querySelector(".cinematic-hero").style.backgroundImage=
-   'linear-gradient(180deg,rgba(0,8,22,.04),rgba(0,12,30,.08)),url("data:image/webp;base64,'+pieces.join("")+'")';
+   'url("data:image/webp;base64,'+pieces.join("")+'")';
  }catch(e){console.warn("Cinematic hero image could not be loaded",e)}
 })();
 </script>
