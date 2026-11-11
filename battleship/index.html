@@ -327,6 +327,22 @@ footer{flex:0 0 auto;width:100%;margin-top:auto}
   min-height:0;border-width:6px!important;border-radius:19px!important;
  }
 }
+
+/* Clear, larger ship lock-in control. */
+#finishPlacement{
+ display:block!important;width:min(100%,620px)!important;min-height:70px!important;height:70px!important;
+ margin:18px auto 8px!important;padding:14px 22px!important;
+ border:3px solid #d6eaf3!important;border-radius:16px!important;
+ background:linear-gradient(180deg,#d9e2e8 0%,#8294a1 13%,#405667 42%,#1b3b55 72%,#0a2944 100%)!important;
+ color:#fff!important;font:1000 clamp(19px,2.6vw,24px)/1.15 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ letter-spacing:1.3px!important;text-shadow:0 2px 3px #001426,0 0 9px #65dfff88!important;
+ box-shadow:inset 0 2px 0 #fff9,inset 0 -4px 0 #071a2b,0 5px 0 #061a2a,0 0 18px #48cfff66!important;
+ cursor:pointer;transition:filter .15s ease,transform .15s ease;
+}
+#finishPlacement:not(:disabled):hover{filter:brightness(1.18);transform:translateY(-1px)}
+#finishPlacement:focus-visible{outline:4px solid #7fe8ff!important;outline-offset:4px}
+#finishPlacement:disabled{opacity:.72!important;filter:saturate(.72);cursor:not-allowed;box-shadow:inset 0 2px 0 #ffffff55,0 3px 0 #061a2a!important}
+@media(max-width:560px){#finishPlacement{width:100%!important;min-height:68px!important;height:68px!important;font-size:19px!important;margin-top:15px!important}}
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel setup-panel" id="lobby"><div class="setup-title">GAME SETUP</div><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses BEGIN GAME. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: The host taps CREATE ROOM once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
