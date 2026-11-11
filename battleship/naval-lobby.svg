@@ -3,6 +3,7 @@
  <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#061b40"/><stop offset=".42" stop-color="#176da7"/><stop offset=".7" stop-color="#f08a45"/><stop offset="1" stop-color="#063c68"/></linearGradient>
  <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#168ec0"/><stop offset=".35" stop-color="#07578d"/><stop offset="1" stop-color="#01172f"/></linearGradient>
  <linearGradient id="steel" x2="0" y2="1"><stop stop-color="#d9eaf4"/><stop offset=".3" stop-color="#647f98"/><stop offset=".72" stop-color="#263f5a"/><stop offset="1" stop-color="#07182e"/></linearGradient>
+ <linearGradient id="teamMetal" x2="0" y2="1"><stop stop-color="#f4f8fb"/><stop offset=".18" stop-color="#9aa8b2"/><stop offset=".42" stop-color="#dce4e9"/><stop offset=".64" stop-color="#687681"/><stop offset=".82" stop-color="#c4cdd3"/><stop offset="1" stop-color="#46535e"/></linearGradient>
  <radialGradient id="blast"><stop stop-color="#fff8b0"/><stop offset=".25" stop-color="#ffbd36"/><stop offset=".6" stop-color="#f34b17" stop-opacity=".9"/><stop offset="1" stop-color="#e52b17" stop-opacity="0"/></radialGradient>
  <linearGradient id="wave" x2="0" y2="1"><stop stop-color="#a9f4ff" stop-opacity=".8"/><stop offset="1" stop-color="#28a9d6" stop-opacity="0"/></linearGradient>
  <filter id="glow"><feGaussianBlur stdDeviation="18"/></filter>
@@ -20,7 +21,7 @@
  <path d="M180 295l20-90h60v90m-20-95v-50h15v50m95 95 20-115h80v115m-42-115v-65h16v65m105 110 18-90h65v90" fill="#526d83" stroke="#c8e0ed" stroke-width="7"/>
  <g fill="#9db7c8" stroke="#253d56" stroke-width="5"><rect x="100" y="275" width="125" height="28" rx="8"/><rect x="300" y="260" width="140" height="30" rx="8"/><rect x="500" y="285" width="110" height="25" rx="8"/></g>
  <g stroke="#d9eff8" stroke-width="10" stroke-linecap="round"><path d="M130 275v-70m-22 22h45m165 35v-85m-25 28h55m185 45v-60m-20 18h42"/></g>
- <text x="350" y="380" text-anchor="middle" font-family="Arial Black,Arial" font-size="62" font-weight="900" fill="#f5fbff" stroke="#183550" stroke-width="5" paint-order="stroke">#TeamSmoke</text>
+ <text x="350" y="380" text-anchor="middle" font-family="Arial Black,Arial" font-size="62" font-weight="900" fill="url(#teamMetal)" stroke="#182a3a" stroke-width="6" paint-order="stroke" style="filter:drop-shadow(0 2px 2px #000)">#TeamSmoke</text>
  <text x="680" y="390" font-family="Arial Black,Arial" font-size="55" fill="#e5f6ff" stroke="#17334c" stroke-width="5" paint-order="stroke">63</text>
  <path d="M0 420q100 100 240 80t240 15 200-10l-80 90H70z" fill="#e8fbff" opacity=".6"/>
 </g>
