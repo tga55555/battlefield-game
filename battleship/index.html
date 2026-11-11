@@ -242,7 +242,21 @@ footer{flex:0 0 auto;width:100%;margin-top:auto}
    background-position:center center!important;
   }
  }
- </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
+ 
+ /* Replace the metallic frame baked into the bottom of the banner with ocean surf. */
+ .cinematic-hero{position:relative;overflow:hidden}
+ .cinematic-hero::after{
+  content:"";position:absolute;z-index:2;left:0;right:0;bottom:0;
+  height:11%;min-height:22px;max-height:38px;pointer-events:none;
+  background:
+   radial-gradient(ellipse 58% 125% at 12% 115%,rgba(113,226,255,.92) 0 18%,rgba(17,151,205,.72) 20% 34%,transparent 37%),
+   radial-gradient(ellipse 64% 130% at 48% 118%,rgba(70,198,239,.9) 0 17%,rgba(7,116,173,.78) 20% 36%,transparent 39%),
+   radial-gradient(ellipse 62% 125% at 88% 116%,rgba(120,230,255,.88) 0 17%,rgba(12,128,184,.78) 20% 35%,transparent 38%),
+   linear-gradient(180deg,rgba(4,103,153,.45),rgba(1,35,73,.98));
+  filter:saturate(1.12);
+ }
+
+</style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel setup-panel" id="lobby"><div class="setup-title">GAME SETUP</div><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses BEGIN GAME. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: The host taps CREATE ROOM once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
 
