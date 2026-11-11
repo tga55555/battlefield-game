@@ -343,12 +343,20 @@ footer{flex:0 0 auto;width:100%;margin-top:auto}
 #finishPlacement:focus-visible{outline:4px solid #7fe8ff!important;outline-offset:4px}
 #finishPlacement:disabled{opacity:.72!important;filter:saturate(.72);cursor:not-allowed;box-shadow:inset 0 2px 0 #ffffff55,0 3px 0 #061a2a!important}
 @media(max-width:560px){#finishPlacement{width:100%!important;min-height:68px!important;height:68px!important;font-size:19px!important;margin-top:15px!important}}
+
+/* In-game ocean tiles reuse the exact lobby artwork, cropped to its wave-filled lower edge. */
+#placeGrid .cell,#guessGrid .cell{
+ background-image:var(--lobby-ocean-art,url("naval-ocean.svg"))!important;
+ background-size:auto 185%!important;background-position:center bottom!important;
+ background-repeat:no-repeat!important;background-color:#064b78!important;
+}
+#finishPlacement{font-size:clamp(20px,2.7vw,25px)!important;letter-spacing:1.4px!important}
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel setup-panel" id="lobby"><div class="setup-title">GAME SETUP</div><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses BEGIN GAME. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: The host taps CREATE ROOM once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
 
 </div>
-<section class="panel hidden" id="game"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">Final ship challenge</h2><div class="muted small">Room: <b id="roomLabel"></b></div></div><button class="gold" id="copy">Copy invite link</button><button id="reconnect" class="hidden">Reconnect</button></div><div class="status" id="status">Waiting for players…</div><div class="players" id="players"></div><div id="placeArea"><h3>Hide your ship</h3><p class="rules small" id="placeHint">Choose exactly one square on the 3×3 ocean. You can lock in only one ship, and its position cannot be changed afterward.</p><div class="grid" id="placeGrid"></div><button id="finishPlacement" class="gold" disabled>Lock in my ship</button></div>
+<section class="panel hidden" id="game"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">Final ship challenge</h2><div class="muted small">Room: <b id="roomLabel"></b></div></div><button class="gold" id="copy">Copy invite link</button><button id="reconnect" class="hidden">Reconnect</button></div><div class="status" id="status">Waiting for players…</div><div class="players" id="players"></div><div id="placeArea"><h3>Hide your ship</h3><p class="rules small" id="placeHint">Choose exactly one square on the 3×3 ocean. You can lock in only one ship, and its position cannot be changed afterward.</p><div class="grid" id="placeGrid"></div><button id="finishPlacement" class="gold" disabled>LOCK IN MY SHIP</button></div>
 <div id="rankPanel" class="hidden"><h3>Host controls · Start battle</h3><p class="rules small">Enter the official TikTok rankings below. The lowest-ranked player is the target; each higher-ranked player gets one guess in order.</p><p id="rankWait" class="status">Waiting for all players to join…</p><div class="players" id="rankPlayers" style="margin:12px 0"></div><div id="rankChoices"></div><p id="rankReady" class="muted small">Select each player’s finishing position. The game starts once every ship is locked.</p><button id="startChallenge" class="gold" disabled>BEGIN GAME</button></div>
 <div id="guessArea" class="hidden"><div id="turnBanner" class="turn-banner hidden" aria-live="polite"></div><h2 id="challengeTitle">Target the lowest-ranked ship</h2><p class="rules" id="guessHint">The current shooter sees their own private targeting grid.</p><div class="grid" id="guessGrid"></div><div class="status" id="result"></div></div>
 <div id="endArea" class="hidden"><h2 id="endTitle"></h2><p id="endText" class="rules"></p><button id="newGame" class="gold hidden">New round</button></div>
@@ -386,8 +394,9 @@ const originalRender=render;render=function(s){originalRender(s);if(isHost&&(pha
    if(!r.ok)throw new Error("Hero image segment "+n+" unavailable");
    return (await r.text()).trim();
   }));
-  document.querySelector(".cinematic-hero").style.backgroundImage=
-   'url("data:image/webp;base64,'+pieces.join("")+'")';
+  const lobbyArt='url("data:image/webp;base64,'+pieces.join("")+'")';
+  document.querySelector(".cinematic-hero").style.backgroundImage=lobbyArt;
+  document.documentElement.style.setProperty("--lobby-ocean-art",lobbyArt);
  }catch(e){console.warn("Cinematic hero image could not be loaded",e)}
 })();
 </script>
