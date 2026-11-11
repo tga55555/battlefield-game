@@ -1,27 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
 <defs>
- <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#e4edf2"/><stop offset=".18" stop-color="#9aabb7"/><stop offset=".43" stop-color="#536d80"/><stop offset=".72" stop-color="#263e53"/><stop offset="1" stop-color="#091b2c"/></linearGradient>
- <linearGradient id="deck" x2="0" y2="1"><stop stop-color="#c7d4dc"/><stop offset="1" stop-color="#425c70"/></linearGradient>
- <linearGradient id="foam" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#39bce5" stop-opacity="0"/></linearGradient>
- <filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter>
+ <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#47d8f4" stop-opacity=".1"/><stop offset=".45" stop-color="#168fbd" stop-opacity=".65"/><stop offset="1" stop-color="#00345b" stop-opacity=".95"/></linearGradient>
+ <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#eef3f5"/><stop offset=".12" stop-color="#aebbc4"/><stop offset=".36" stop-color="#667986"/><stop offset=".68" stop-color="#354b5b"/><stop offset="1" stop-color="#172a39"/></linearGradient>
+ <linearGradient id="deck" x2="0" y2="1"><stop stop-color="#e2e8eb"/><stop offset=".45" stop-color="#83939d"/><stop offset="1" stop-color="#405360"/></linearGradient>
+ <linearGradient id="steel" x2="0" y2="1"><stop stop-color="#f4f7f8"/><stop offset=".35" stop-color="#aab7bf"/><stop offset="1" stop-color="#526572"/></linearGradient>
+ <linearGradient id="wake" x2="0" y2="1"><stop stop-color="#fff"/><stop offset=".35" stop-color="#a8efff" stop-opacity=".85"/><stop offset="1" stop-color="#19a9d8" stop-opacity="0"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
+ <filter id="shadow"><feGaussianBlur stdDeviation="13"/></filter>
 </defs>
-<ellipse cx="300" cy="457" rx="250" ry="30" fill="#00172d" opacity=".65" filter="url(#shadow)"/>
-<path d="M-10 455Q75 395 155 449T315 444T480 439T620 451L620 540Q525 505 430 520T245 520T40 535Z" fill="#07598a"/>
-<path d="M-25 450Q60 400 145 450T315 447T485 437T640 455" fill="none" stroke="#e9fcff" stroke-width="18" opacity=".75"/>
-<path d="M15 480Q95 445 170 480T320 480T470 468T610 482" fill="none" stroke="url(#foam)" stroke-width="13"/>
-<g transform="translate(300 245)">
- <path d="M-275 112L-240 76L-170 52L-80 42L80 40L190 56L252 78L275 108L222 170L-225 170L-270 137Z" fill="#071a2c" stroke="#a9c1cf" stroke-width="8" stroke-linejoin="round"/>
- <path d="M-255 104L-215 77L-155 62L-70 53L82 52L184 66L236 88L250 108L208 150L-215 150L-252 128Z" fill="url(#hull)" stroke="#d4e3ea" stroke-width="6" stroke-linejoin="round"/>
- <path d="M-242 103L-170 84L-70 74L85 72L190 84L240 103" fill="none" stroke="#eff8fb" stroke-width="5" opacity=".85"/>
- <path d="M-218 130Q-70 151 70 139T210 118" fill="none" stroke="#102b40" stroke-width="9"/>
- <path d="M-155 57L-143 12L-90 7L-58 54L-15 50L-2-24L76-24L100 55L152 64L128 91L-137 92Z" fill="url(#deck)" stroke="#d8e5eb" stroke-width="6"/>
- <path d="M-120 14L-112-61L-55-61L-47 45Z" fill="#5c7588" stroke="#d0e0e8" stroke-width="6"/>
- <path d="M-2 48L10-91L88-91L101 54Z" fill="#71899a" stroke="#d7e5eb" stroke-width="6"/>
- <path d="M125 60L137-30L190-30L201 77Z" fill="#536e82" stroke="#c9dbe4" stroke-width="6"/>
- <g fill="#203e56" stroke="#d7e5eb" stroke-width="4"><rect x="-106" y="-44" width="13" height="15"/><rect x="-82" y="-44" width="13" height="15"/><rect x="23" y="-73" width="15" height="17"/><rect x="50" y="-73" width="15" height="17"/><rect x="151" y="-12" width="13" height="14"/><rect x="173" y="-12" width="13" height="14"/></g>
- <g fill="#aebdc7" stroke="#314b60" stroke-width="5"><path d="M-205 78L-194 43L-155 43L-143 78Z"/><path d="M-40 70L-29 34L12 34L24 72Z"/><path d="M110 79L120 48L158 48L168 84Z"/></g>
- <g stroke="#dce8ee" stroke-width="8" stroke-linecap="round"><path d="M-178 44L-178 14M-178 14L-218 1M-178 14L-138 1"/><path d="M-9 35L-9 2M-9 2L-50-12M-9 2L31-12"/><path d="M139 48L139 18M139 18L105 6M139 18L174 6"/></g>
- <path d="M-225 116L-175 102L-120 96M-30 93L45 90M112 102L190 99" fill="none" stroke="#dce8ee" stroke-width="3" opacity=".65"/>
+<!-- Deep blue sea and foaming wake -->
+<path d="M0 365Q100 326 190 362T370 361T560 355T740 363T900 345V520H0Z" fill="url(#sea)"/>
+<ellipse cx="470" cy="414" rx="365" ry="31" fill="#00182b" opacity=".8" filter="url(#shadow)"/>
+<path d="M35 395Q150 355 255 391T475 390T690 382T880 391" fill="none" stroke="#e8fbff" stroke-width="17" opacity=".8"/>
+<path d="M0 431Q110 397 215 426T430 424T655 414T900 421" fill="none" stroke="#55d6f4" stroke-width="11" opacity=".75"/>
+<path d="M20 461Q130 430 255 455T490 452T710 444T900 452" fill="none" stroke="#b8f4ff" stroke-width="7" opacity=".65"/>
+<g transform="translate(0 5)">
+ <!-- Main battleship hull, broad side profile -->
+ <path d="M58 309L120 282L214 267L350 258L560 258L680 270L775 287L846 315L811 363Q760 391 674 397L211 397Q132 383 92 350Z" fill="#091b2a" stroke="#d5e0e6" stroke-width="8" stroke-linejoin="round"/>
+ <path d="M77 307L143 285L230 275L360 267L558 267L675 278L770 294L827 318L795 351Q741 379 665 383L221 383Q148 371 108 344Z" fill="url(#hull)" stroke="#f0f5f7" stroke-width="5" stroke-linejoin="round"/>
+ <path d="M102 315Q280 337 455 325T800 315" fill="none" stroke="#243c4c" stroke-width="9"/>
+ <path d="M118 342Q300 359 485 350T781 339" fill="none" stroke="#d5e1e7" stroke-width="3" opacity=".7"/>
+ <!-- Deck and armored superstructure -->
+ <path d="M180 276L202 244L286 237L319 264L430 260L450 220L548 220L574 266L674 276L706 299L170 299Z" fill="url(#deck)" stroke="#dce6eb" stroke-width="5"/>
+ <path d="M258 239L266 177L328 177L342 245Z" fill="#6c818e" stroke="#e2e9ed" stroke-width="5"/>
+ <path d="M445 220L458 130L562 130L580 222Z" fill="#758995" stroke="#e4ecef" stroke-width="6"/>
+ <path d="M461 150L477 111L548 111L565 150Z" fill="url(#steel)" stroke="#e7eef1" stroke-width="4"/>
+ <path d="M627 270L643 206L704 206L719 289Z" fill="#536b7b" stroke="#d5e0e7" stroke-width="5"/>
+ <!-- Bridge windows -->
+ <g fill="#0c263a" stroke="#dce8ee" stroke-width="3">
+  <rect x="277" y="191" width="13" height="17"/><rect x="300" y="191" width="13" height="17"/>
+  <rect x="477" y="163" width="15" height="18"/><rect x="502" y="163" width="15" height="18"/><rect x="527" y="163" width="15" height="18"/>
+  <rect x="657" y="224" width="13" height="16"/><rect x="681" y="224" width="13" height="16"/>
+ </g>
+ <!-- Funnels, antennae and radar -->
+ <path d="M367 259L376 177L417 177L429 261Z" fill="#344d5e" stroke="#d8e2e8" stroke-width="5"/>
+ <path d="M378 177L382 147L412 147L417 177Z" fill="#202f3b" stroke="#c7d5dc" stroke-width="4"/>
+ <path d="M505 111V72M505 84L469 67M505 84L542 66M505 72L505 48" fill="none" stroke="#e4edf1" stroke-width="5" stroke-linecap="round"/>
+ <path d="M299 178V143M299 151L274 137M299 151L323 137" fill="none" stroke="#dbe6eb" stroke-width="4" stroke-linecap="round"/>
+ <path d="M682 207V174M682 183L659 170M682 183L704 170" fill="none" stroke="#dbe6eb" stroke-width="4" stroke-linecap="round"/>
+ <!-- Triple naval gun turrets -->
+ <g fill="url(#steel)" stroke="#334b5b" stroke-width="5">
+  <path d="M135 292L149 256L207 256L224 295Z"/><path d="M392 274L407 237L469 237L484 275Z"/><path d="M738 296L751 267L798 267L813 303Z"/>
+ </g>
+ <g stroke="#e9eff2" stroke-width="8" stroke-linecap="round">
+  <path d="M163 259L163 222M179 259L179 217M195 259L195 222"/>
+  <path d="M420 239L420 197M437 239L437 193M454 239L454 197"/>
+  <path d="M764 270L764 239M780 270L780 236M795 273L795 243"/>
+ </g>
+ <g stroke="#263d4e" stroke-width="4"><path d="M157 254L157 222M173 254L173 217M189 254L189 222"/><path d="M414 237L414 197M431 237L431 193M448 237L448 197"/></g>
+ <!-- Hull portholes -->
+ <g fill="#122c3d" stroke="#d9e5eb" stroke-width="2">
+  <circle cx="260" cy="350" r="6"/><circle cx="292" cy="352" r="6"/><circle cx="324" cy="353" r="6"/><circle cx="356" cy="354" r="6"/><circle cx="388" cy="354" r="6"/><circle cx="420" cy="354" r="6"/><circle cx="452" cy="354" r="6"/><circle cx="484" cy="353" r="6"/><circle cx="516" cy="352" r="6"/><circle cx="548" cy="351" r="6"/><circle cx="580" cy="349" r="6"/><circle cx="612" cy="347" r="6"/>
+ </g>
 </g>
-<path d="M8 520q75-45 150-5t150 0 150 0 150-2" fill="none" stroke="#dffaff" stroke-width="9" opacity=".78" stroke-linecap="round"/>
+<!-- White-blue bow spray -->
+<path d="M748 367Q820 344 884 374Q833 373 802 394Q850 390 900 410Q819 397 770 414Z" fill="url(#wake)" opacity=".95"/>
+<path d="M55 395Q135 378 212 395M80 420Q180 402 280 422M635 402Q745 382 860 398" fill="none" stroke="#f1fcff" stroke-width="6" stroke-linecap="round" opacity=".8"/>
 </svg>
