@@ -1,48 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
 <defs>
- <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#e8f2f5"/><stop offset=".16" stop-color="#9db3c2"/><stop offset=".43" stop-color="#526d82"/><stop offset=".78" stop-color="#203b56"/><stop offset="1" stop-color="#0a203b"/></linearGradient>
- <linearGradient id="deck" x2="0" y2="1"><stop stop-color="#667f91"/><stop offset="1" stop-color="#1c354e"/></linearGradient>
- <linearGradient id="wake" x2="0" y2="1"><stop stop-color="#f4ffff" stop-opacity=".95"/><stop offset="1" stop-color="#56d9fa" stop-opacity=".08"/></linearGradient>
- <filter id="shadow"><feGaussianBlur stdDeviation="10"/></filter>
- <filter id="glow"><feGaussianBlur stdDeviation="4"/></filter>
+ <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#dce6eb"/><stop offset=".22" stop-color="#8b9ba6"/><stop offset=".5" stop-color="#526574"/><stop offset=".8" stop-color="#253a4d"/><stop offset="1" stop-color="#0a1b2d"/></linearGradient>
+ <linearGradient id="deck" x2="0" y2="1"><stop stop-color="#9cabb5"/><stop offset="1" stop-color="#263b4d"/></linearGradient>
+ <linearGradient id="brand" x2="0" y2="1"><stop stop-color="#f6fafc"/><stop offset=".2" stop-color="#9eabb5"/><stop offset=".42" stop-color="#e2e8ec"/><stop offset=".68" stop-color="#64727e"/><stop offset=".86" stop-color="#c6d0d6"/><stop offset="1" stop-color="#53616c"/></linearGradient>
+ <linearGradient id="wake" x2="0" y2="1"><stop stop-color="#efffff" stop-opacity=".95"/><stop offset="1" stop-color="#43c9ef" stop-opacity=".08"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter>
 </defs>
-<!-- wake and sea spray, with transparent edges so the ocean tile remains visible -->
-<ellipse cx="302" cy="430" rx="248" ry="42" fill="#001b36" opacity=".55" filter="url(#shadow)"/>
-<path d="M36 410q56-32 112 0t112 0t112 0t112 0t112 0" fill="none" stroke="#c8f8ff" stroke-width="17" opacity=".8" stroke-linecap="round"/>
-<path d="M62 453q48-25 96 0t96 0t96 0t96 0t96 0" fill="none" stroke="#7de8ff" stroke-width="11" opacity=".8" stroke-linecap="round"/>
-<path d="M85 480q65-22 130 0t130 0t130 0t130 0" fill="none" stroke="#eaffff" stroke-width="7" opacity=".55" stroke-linecap="round"/>
-<g transform="translate(300 245)">
- <!-- deep steel hull -->
- <path d="M-264 104L-220 78L-156 65L-111 43L-76 15L-50-20L-18-38L18-38L54-16L91 9L142 30L208 54L258 86L235 128L198 153L-214 153L-248 132Z" fill="url(#hull)" stroke="#e5f5fa" stroke-width="7" stroke-linejoin="round"/>
- <path d="M-250 105L-203 94L-140 82L-91 60L-51 29L-19 8L33 8L76 27L124 47L190 68L246 91" fill="none" stroke="#d8e7ec" stroke-width="5" opacity=".8"/>
- <path d="M-229 126Q-80 147 65 132T224 113" fill="none" stroke="#102a44" stroke-width="10"/>
- <path d="M-190 83L-152 68L-117 61L-102 72L-143 91Z" fill="#f3c66f" opacity=".9"/>
- <!-- deck -->
- <path d="M-160 52L-112 22L-74 1L-36-5L42-5L92 20L144 39L186 62L145 78L-125 82Z" fill="url(#deck)" stroke="#d3e2e9" stroke-width="4"/>
- <!-- forward gun turret -->
- <path d="M-145 49L-133 18L-102 9L-76 20L-68 49Z" fill="#aebfca" stroke="#304c65" stroke-width="5"/>
- <path d="M-111 15L-105-8L-94-8L-90 17M-98-5L-58-20L-54-12L-94 4" fill="none" stroke="#d9e8ed" stroke-width="8" stroke-linecap="round"/>
- <!-- rear gun turret -->
- <path d="M112 54L124 25L154 17L179 30L184 62Z" fill="#aebfca" stroke="#304c65" stroke-width="5"/>
- <path d="M147 23L153 3L164 3L167 27M162 8L205-7L208 1L166 17" fill="none" stroke="#d9e8ed" stroke-width="8" stroke-linecap="round"/>
- <!-- bridge superstructure -->
- <path d="M-38 17V-64L-20-91H28L49-64V20Z" fill="#b6c8d1" stroke="#294761" stroke-width="6"/>
- <path d="M-26-64H37V-43H-26Z" fill="#253f58"/>
- <path d="M-18-58h12v11h-12zm22 0h12v11H4zm22 0h10v11H26z" fill="#9eeaff"/>
- <path d="M-15-92V-123H16V-92M-5-123V-154H6V-123" fill="#8199a9" stroke="#243f58" stroke-width="5"/>
- <path d="M0-153V-190M0-177L-55-197M0-168L58-194M0-185L30-213" fill="none" stroke="#eaf8fc" stroke-width="5" stroke-linecap="round"/>
- <path d="M-54-197l-14-9m72 27l15-12" stroke="#eaf8fc" stroke-width="4"/>
- <!-- exhaust stacks -->
- <path d="M-78 11V-37H-52V11M58 14V-30H84V24" fill="#637e91" stroke="#253f58" stroke-width="5"/>
- <path d="M-76-37h22m58 7h22" stroke="#dbe9ef" stroke-width="5"/>
- <!-- radar and antenna details -->
- <path d="M-29-108h59M-20-116h41M-14-124h28" stroke="#effaff" stroke-width="4" stroke-linecap="round"/>
- <!-- portholes / deck lights -->
- <g fill="#f7d68b" stroke="#243d55" stroke-width="2"><circle cx="-188" cy="104" r="4"/><circle cx="-164" cy="99" r="4"/><circle cx="191" cy="91" r="4"/><circle cx="214" cy="99" r="4"/></g>
- <path d="M-205 118L-176 124M164 119l37-9" stroke="#f4fbff" stroke-width="4" opacity=".75"/>
+<ellipse cx="300" cy="450" rx="250" ry="35" fill="#00172d" opacity=".65" filter="url(#shadow)"/>
+<path d="M28 444q65-35 130 0t130 0 130 0 130 0" fill="none" stroke="#c8f8ff" stroke-width="16" opacity=".8" stroke-linecap="round"/>
+<path d="M55 475q55-25 110 0t110 0 110 0 110 0 110 0" fill="none" stroke="#65dfff" stroke-width="10" opacity=".85" stroke-linecap="round"/>
+<g transform="translate(300 260)">
+ <path d="M-270 100L-218 65L-150 55L-100 32L-65 5L-35-28L0-42L35-28L70 0L115 24L175 42L245 72L270 96L238 139L190 163L-220 163L-260 135Z" fill="#081b2d" stroke="#a9bfcb" stroke-width="7" stroke-linejoin="round"/>
+ <path d="M-250 93L-202 63L-145 57L-96 34L-61 8L-30-15L23-15L65 7L111 30L171 48L238 79L220 116L180 140L-211 140L-243 119Z" fill="url(#hull)" stroke="#dce8ee" stroke-width="6" stroke-linejoin="round"/>
+ <path d="M-236 94L-190 83L-137 75L-91 53L-54 27L-24 9L22 9L66 30L115 51L178 70L233 91" fill="none" stroke="#edf5f8" stroke-width="4" opacity=".85"/>
+ <path d="M-210 119Q-70 143 65 127T220 105" fill="none" stroke="#132a3e" stroke-width="9"/>
+ <path d="M-160 46L-110 16L-72-4L-32-8L44-8L94 17L145 37L185 58L145 77L-126 78Z" fill="url(#deck)" stroke="#d5e2e8" stroke-width="4"/>
+ <g fill="#aab9c2" stroke="#31495b" stroke-width="5">
+  <path d="M-148 45L-136 15L-105 7L-78 19L-70 48Z"/>
+  <path d="M112 52L124 23L155 15L181 29L185 60Z"/>
+ </g>
+ <g stroke="#e4edf1" stroke-width="8" stroke-linecap="round" fill="none">
+  <path d="M-111 14L-106-12L-95-12L-91 16M-99-8L-57-24"/>
+  <path d="M148 21L154-4L165-4L168 25M163 1L205-13"/>
+ </g>
+ <path d="M-38 15V-65L-20-92H28L49-65V18Z" fill="#aebdc6" stroke="#30485c" stroke-width="6"/>
+ <path d="M-26-64H37V-43H-26Z" fill="#263f55"/>
+ <g fill="#a9efff"><rect x="-18" y="-60" width="12" height="10"/><rect x="4" y="-60" width="12" height="10"/><rect x="26" y="-60" width="8" height="10"/></g>
+ <path d="M-15-92V-124H16V-92M-5-124V-154H6V-124M0-153V-190M0-177L-55-197M0-168L58-194" fill="none" stroke="#dce8ed" stroke-width="5" stroke-linecap="round"/>
+ <path d="M-78 10V-38H-52V10M58 14V-30H84V24" fill="#61798a" stroke="#263e53" stroke-width="5"/>
+ <path d="M-190 84L-154 70L-121 63L-106 74L-145 91Z" fill="#d5b36c"/>
+ <g fill="#f5d28b" stroke="#273f53" stroke-width="2"><circle cx="-188" cy="104" r="4"/><circle cx="-164" cy="99" r="4"/><circle cx="191" cy="91" r="4"/><circle cx="214" cy="99" r="4"/></g>
+ <text x="0" y="117" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="37" font-weight="900" letter-spacing="1" fill="url(#brand)" stroke="#172a3b" stroke-width="4" paint-order="stroke" textLength="315" lengthAdjust="spacingAndGlyphs">#TeamSmoke</text>
 </g>
-<!-- bow spray and foam -->
-<path d="M40 372q48-35 93-3q31 22 62 2q38-27 73 1q39 28 77 0q42-30 83 1q43 28 83-3" fill="none" stroke="url(#wake)" stroke-width="18" stroke-linecap="round"/>
-<path d="M92 398q38-20 76 0t76 0t76 0t76 0t76 0" fill="none" stroke="#efffff" stroke-width="7" opacity=".8" stroke-linecap="round"/>
-<g fill="#efffff" opacity=".8"><path d="M55 365l14-27 14 30-14-8z"/><path d="M490 373l18-31 13 33-17-9z"/><path d="M135 423l12-19 12 22-13-7z"/><path d="M423 429l15-22 13 24-15-7z"/></g>
+<path d="M34 390q48-35 93-3q31 22 62 2q38-27 73 1q39 28 77 0q42-30 83 1q43 28 83-3" fill="none" stroke="url(#wake)" stroke-width="16" stroke-linecap="round"/>
+<path d="M92 420q38-20 76 0t76 0 76 0 76 0 76 0" fill="none" stroke="#efffff" stroke-width="7" opacity=".8" stroke-linecap="round"/>
 </svg>
