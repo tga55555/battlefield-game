@@ -1,37 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
 <defs>
- <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#dce6eb"/><stop offset=".22" stop-color="#8b9ba6"/><stop offset=".5" stop-color="#526574"/><stop offset=".8" stop-color="#253a4d"/><stop offset="1" stop-color="#0a1b2d"/></linearGradient>
- <linearGradient id="deck" x2="0" y2="1"><stop stop-color="#9cabb5"/><stop offset="1" stop-color="#263b4d"/></linearGradient>
- <linearGradient id="brand" x2="0" y2="1"><stop stop-color="#f6fafc"/><stop offset=".2" stop-color="#9eabb5"/><stop offset=".42" stop-color="#e2e8ec"/><stop offset=".68" stop-color="#64727e"/><stop offset=".86" stop-color="#c6d0d6"/><stop offset="1" stop-color="#53616c"/></linearGradient>
- <linearGradient id="wake" x2="0" y2="1"><stop stop-color="#efffff" stop-opacity=".95"/><stop offset="1" stop-color="#43c9ef" stop-opacity=".08"/></linearGradient>
- <filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter>
+ <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#d9eaf4"/><stop offset=".3" stop-color="#647f98"/><stop offset=".72" stop-color="#263f5a"/><stop offset="1" stop-color="#07182e"/></linearGradient>
+ <linearGradient id="deck" x2="0" y2="1"><stop stop-color="#aebfca"/><stop offset="1" stop-color="#263f5a"/></linearGradient>
+ <linearGradient id="teamMetal" x2="0" y2="1"><stop stop-color="#f4f8fb"/><stop offset=".18" stop-color="#9aa8b2"/><stop offset=".42" stop-color="#dce4e9"/><stop offset=".64" stop-color="#687681"/><stop offset=".82" stop-color="#c4cdd3"/><stop offset="1" stop-color="#46535e"/></linearGradient>
+ <linearGradient id="wake" x2="0" y2="1"><stop stop-color="#f1ffff" stop-opacity=".96"/><stop offset="1" stop-color="#28a9d6" stop-opacity=".08"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="8"/></filter>
 </defs>
-<ellipse cx="300" cy="450" rx="250" ry="35" fill="#00172d" opacity=".65" filter="url(#shadow)"/>
-<path d="M28 444q65-35 130 0t130 0 130 0 130 0" fill="none" stroke="#c8f8ff" stroke-width="16" opacity=".8" stroke-linecap="round"/>
-<path d="M55 475q55-25 110 0t110 0 110 0 110 0 110 0" fill="none" stroke="#65dfff" stroke-width="10" opacity=".85" stroke-linecap="round"/>
+<ellipse cx="300" cy="458" rx="250" ry="30" fill="#00172d" opacity=".68" filter="url(#shadow)"/>
+<!-- lobby-style rolling sea and white wake -->
+<path d="M8 455Q85 390 165 448T325 445T485 438T625 450L625 535Q525 505 430 522T245 520T55 532Z" fill="#0875a7" opacity=".72"/>
+<path d="M-30 453Q60 395 145 447T315 444T485 433T640 451" fill="none" stroke="#e8fbff" stroke-width="24" opacity=".42" filter="url(#shadow)"/>
+<path d="M-30 448Q60 400 145 450T315 447T485 437T640 455" fill="none" stroke="url(#wake)" stroke-width="16" stroke-linecap="round"/>
+<path d="M20 480Q95 445 170 480T320 480T470 468T610 482" fill="none" stroke="#eafcff" stroke-width="6" opacity=".86" stroke-linecap="round"/>
 <g transform="translate(300 260)">
- <path d="M-270 100L-218 65L-150 55L-100 32L-65 5L-35-28L0-42L35-28L70 0L115 24L175 42L245 72L270 96L238 139L190 163L-220 163L-260 135Z" fill="#081b2d" stroke="#a9bfcb" stroke-width="7" stroke-linejoin="round"/>
- <path d="M-250 93L-202 63L-145 57L-96 34L-61 8L-30-15L23-15L65 7L111 30L171 48L238 79L220 116L180 140L-211 140L-243 119Z" fill="url(#hull)" stroke="#dce8ee" stroke-width="6" stroke-linejoin="round"/>
- <path d="M-236 94L-190 83L-137 75L-91 53L-54 27L-24 9L22 9L66 30L115 51L178 70L233 91" fill="none" stroke="#edf5f8" stroke-width="4" opacity=".85"/>
- <path d="M-210 119Q-70 143 65 127T220 105" fill="none" stroke="#132a3e" stroke-width="9"/>
- <path d="M-160 46L-110 16L-72-4L-32-8L44-8L94 17L145 37L185 58L145 77L-126 78Z" fill="url(#deck)" stroke="#d5e2e8" stroke-width="4"/>
- <g fill="#aab9c2" stroke="#31495b" stroke-width="5">
-  <path d="M-148 45L-136 15L-105 7L-78 19L-70 48Z"/>
-  <path d="M112 52L124 23L155 15L181 29L185 60Z"/>
+ <!-- matching lobby ship hull silhouette -->
+ <path d="M-270 105L-220 50L-80 34L90 30L235 62L270 105L210 190L-215 190L-265 145Z" fill="#0a1d32" stroke="#9ab6c8" stroke-width="8" stroke-linejoin="round"/>
+ <path d="M-245 96L-165 52L-45 42L105 38L220 68L240 104L192 165L-205 165L-240 132Z" fill="url(#hull)" stroke="#c7e1ed" stroke-width="7" stroke-linejoin="round"/>
+ <path d="M-235 101L-165 78L-45 67L105 63L220 87" fill="none" stroke="#e8f5fb" stroke-width="5" opacity=".9"/>
+ <path d="M-210 142Q-75 165 65 150T205 125" fill="none" stroke="#132a3e" stroke-width="10"/>
+ <!-- deck and superstructure based on lobby ship -->
+ <path d="M-165 54L-145 8L-80 4L-55 47L-8 38L12-30L85-30L110 42L165 55L130 83L-140 86Z" fill="url(#deck)" stroke="#c7e1ed" stroke-width="6"/>
+ <g fill="#526d83" stroke="#c8e0ed" stroke-width="7">
+  <path d="M-135 20L-125-68L-65-68L-58 28Z"/>
+  <path d="M-8 36L8-82L88-82L98 48Z"/>
+  <path d="M120 49L132-36L196-36L204 68Z"/>
  </g>
- <g stroke="#e4edf1" stroke-width="8" stroke-linecap="round" fill="none">
-  <path d="M-111 14L-106-12L-95-12L-91 16M-99-8L-57-24"/>
-  <path d="M148 21L154-4L165-4L168 25M163 1L205-13"/>
- </g>
- <path d="M-38 15V-65L-20-92H28L49-65V18Z" fill="#aebdc6" stroke="#30485c" stroke-width="6"/>
- <path d="M-26-64H37V-43H-26Z" fill="#263f55"/>
- <g fill="#a9efff"><rect x="-18" y="-60" width="12" height="10"/><rect x="4" y="-60" width="12" height="10"/><rect x="26" y="-60" width="8" height="10"/></g>
- <path d="M-15-92V-124H16V-92M-5-124V-154H6V-124M0-153V-190M0-177L-55-197M0-168L58-194" fill="none" stroke="#dce8ed" stroke-width="5" stroke-linecap="round"/>
- <path d="M-78 10V-38H-52V10M58 14V-30H84V24" fill="#61798a" stroke="#263e53" stroke-width="5"/>
- <path d="M-190 84L-154 70L-121 63L-106 74L-145 91Z" fill="#d5b36c"/>
- <g fill="#f5d28b" stroke="#273f53" stroke-width="2"><circle cx="-188" cy="104" r="4"/><circle cx="-164" cy="99" r="4"/><circle cx="191" cy="91" r="4"/><circle cx="214" cy="99" r="4"/></g>
- <text x="0" y="117" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="37" font-weight="900" letter-spacing="1" fill="url(#brand)" stroke="#172a3b" stroke-width="4" paint-order="stroke" textLength="315" lengthAdjust="spacingAndGlyphs">#TeamSmoke</text>
+ <g stroke="#d9eff8" stroke-width="9" stroke-linecap="round"><path d="M-95-68v-76m-24 26h50m67 36v-90m-25 28h55m101 45v-66m-20 18h42"/></g>
+ <g fill="#9db7c8" stroke="#253d56" stroke-width="5"><rect x="-192" y="22" width="115" height="29" rx="7"/><rect x="-20" y="18" width="125" height="31" rx="7"/><rect x="130" y="50" width="92" height="24" rx="7"/></g>
+ <path d="M-110 10V-22H-76V12M18-6V-43H50V-2M145 24V-5H174V31" fill="#263f55" stroke="#d1e5ee" stroke-width="4"/>
+ <g fill="#d5eff9"><rect x="-102" y="-16" width="10" height="8"/><rect x="-84" y="-16" width="10" height="8"/><rect x="26" y="-36" width="10" height="8"/><rect x="43" y="-36" width="10" height="8"/></g>
+ <text x="5" y="145" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="43" font-weight="900" letter-spacing="0" fill="url(#teamMetal)" stroke="#182a3a" stroke-width="5" paint-order="stroke" textLength="330" lengthAdjust="spacingAndGlyphs">#TeamSmoke</text>
 </g>
-<path d="M34 390q48-35 93-3q31 22 62 2q38-27 73 1q39 28 77 0q42-30 83 1q43 28 83-3" fill="none" stroke="url(#wake)" stroke-width="16" stroke-linecap="round"/>
-<path d="M92 420q38-20 76 0t76 0 76 0 76 0 76 0" fill="none" stroke="#efffff" stroke-width="7" opacity=".8" stroke-linecap="round"/>
+<path d="M8 520q75-45 150-5t150 0 150 0 150-2" fill="none" stroke="#dffaff" stroke-width="9" opacity=".78" stroke-linecap="round"/>
 </svg>
