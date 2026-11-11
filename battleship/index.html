@@ -170,6 +170,81 @@ footer{margin:12px auto 0;width:100%;padding:14px 10px calc(20px + env(safe-area
 }
  .turn-banner{margin:12px auto 16px;padding:13px 16px;max-width:720px;border:2px solid #ffdc78;border-radius:13px;background:linear-gradient(100deg,#51340c,#172f48 55%,#07517b);color:#fff1b8;font-size:clamp(19px,3vw,27px);font-weight:1000;letter-spacing:1px;text-align:center;text-shadow:0 2px 6px #000;box-shadow:0 0 18px #ffca5266}.turn-banner.yours{border-color:#7cf2ff;color:#d8fbff;box-shadow:0 0 20px #28cfff88}.missile-flight{position:absolute;z-index:20;left:7%;bottom:4%;width:35px;height:10px;border-radius:8px 3px 3px 8px;background:linear-gradient(180deg,#fff4b0,#ff9b26 55%,#8b2b13);box-shadow:0 0 12px #ffb52c;pointer-events:none;transform-origin:center;animation:missile-launch .68s cubic-bezier(.2,.65,.35,1) forwards}.missile-flight:before{content:"";position:absolute;right:-9px;top:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:11px solid #e8e9e7}.missile-flight:after{content:"";position:absolute;left:-13px;top:2px;width:14px;height:6px;border-radius:50%;background:#ffdc53;filter:blur(3px)}@keyframes missile-launch{to{transform:translate(var(--dx),var(--dy)) rotate(-38deg)}}.blast{position:absolute;z-index:22;transform:translate(-50%,-50%);pointer-events:none;font-size:clamp(38px,8vw,66px);animation:impact-pop .85s ease-out forwards;text-shadow:0 0 16px #ffb32b}.blast.miss{font-size:18px;font-weight:1000;color:#b9f3ff;text-shadow:0 0 10px #28cfff}@keyframes impact-pop{0%{opacity:0;scale:.2}25%{opacity:1;scale:1.35}100%{opacity:0;scale:1.8}}.cell.guessed{background:#294454;color:#d5f5ff}.cell.ship-hit{border-color:#ffcf57;box-shadow:0 0 0 2px #ff8b35,0 0 25px #ff6b27}.cell.ship-hit .ship-art{filter:brightness(1.25) sepia(.35) drop-shadow(0 0 8px #ff8b35)}
 .grid{position:relative}
+
+/* FINAL VISUAL-ONLY REDESIGN: cinematic Smoke After Dark lobby.
+   Intentionally CSS-only: game logic, PeerJS setup, room codes, and rules untouched. */
+.cinematic-hero{
+ height:clamp(290px,36vw,470px)!important;min-height:290px!important;
+ display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;
+ padding:clamp(28px,5vw,64px) 16px 20px!important;
+ background-position:center 42%!important;background-size:cover!important;
+ position:relative;isolation:isolate;overflow:hidden;
+}
+.cinematic-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,8,20,.08),rgba(0,10,26,.2) 45%,rgba(0,8,22,.82))}
+.cinematic-hero h1{
+ display:block!important;margin:0!important;padding:0 10px;
+ font-size:clamp(44px,8vw,104px)!important;line-height:.98!important;
+ font-weight:1000!important;letter-spacing:clamp(2px,.9vw,11px)!important;
+ color:#f5fbff!important;-webkit-text-stroke:1px #b7d7e8;
+ background:linear-gradient(180deg,#fff 4%,#d9e7ef 25%,#829bab 48%,#f8ffff 58%,#536e83 78%,#e8f7ff 100%);
+ -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+ filter:drop-shadow(0 4px 1px #00182e) drop-shadow(0 8px 0 #03172d) drop-shadow(0 0 18px #13bfff);
+}
+.cinematic-hero p{
+ display:inline-block!important;margin:16px 0 0!important;padding:7px 28px!important;
+ border-top:2px solid #b7edff!important;border-bottom:2px solid #b7edff!important;
+ color:#fff!important;font-size:clamp(15px,2.2vw,25px)!important;
+ font-weight:1000!important;letter-spacing:clamp(2px,.45vw,6px)!important;
+ text-shadow:0 2px 8px #001329,0 0 18px #00aeff;
+}
+main{max-width:1420px!important;padding:clamp(16px,2.8vw,34px) clamp(12px,2.6vw,32px) 34px!important}
+.landing-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:20px!important}
+#lobby.setup-panel{
+ max-width:980px!important;padding:clamp(22px,3.4vw,42px)!important;
+ border:2px solid #8bdcff!important;border-radius:22px!important;
+ background:linear-gradient(135deg,rgba(3,35,64,.9),rgba(0,13,31,.94) 65%,rgba(4,42,68,.91))!important;
+ box-shadow:inset 0 0 28px #1abfff22,0 0 0 1px #e7faff44,0 18px 48px #000b,0 0 30px #00aaff44!important;
+ backdrop-filter:blur(10px);
+}
+#lobby .setup-title{font-size:clamp(22px,2.8vw,31px)!important;letter-spacing:4px!important}
+#lobby h2{font-size:clamp(27px,3.5vw,40px)!important;color:#ffe18a!important}
+#lobby .rules{max-width:790px!important;font-size:clamp(16px,1.7vw,19px)!important}
+#game{
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+ grid-template-areas:"top top" "status status" "players players" "place rank" "guess guess" "end end";
+ gap:14px;max-width:1320px!important;margin:22px auto!important;
+ padding:clamp(14px,2.2vw,28px)!important;border:2px solid #70dfff!important;
+ border-radius:22px!important;background:linear-gradient(145deg,rgba(2,25,49,.9),rgba(0,9,24,.95))!important;
+ box-shadow:inset 0 0 26px #0abaff1c,0 14px 40px #000b,0 0 25px #00aaff44!important;
+ backdrop-filter:blur(8px);
+}
+#game>.row:first-child{grid-area:top;align-items:center;flex-wrap:wrap}
+#game>#status{grid-area:status}
+#game>#players{grid-area:players}
+#placeArea{grid-area:place;min-width:0;padding:clamp(14px,2vw,24px);border:1px solid #52c9f2;border-radius:17px;background:linear-gradient(145deg,rgba(7,54,82,.78),rgba(2,23,46,.84));box-shadow:inset 0 0 20px #28caff1c}
+#rankPanel{grid-area:rank;min-width:0;padding:clamp(14px,2vw,24px);border:1px solid #d9b45b;border-radius:17px;background:linear-gradient(145deg,rgba(67,49,20,.42),rgba(3,24,45,.88));box-shadow:inset 0 0 20px #ffce5b12}
+#guessArea{grid-area:guess;padding:clamp(14px,2vw,24px);border:1px solid #52c9f2;border-radius:17px;background:linear-gradient(145deg,rgba(5,42,70,.7),rgba(1,16,35,.88))}
+#endArea{grid-area:end}
+#placeArea h3,#rankPanel h3,#guessArea h2{color:#f6fbff;text-shadow:0 2px 9px #00aaff66}
+#placeArea h3:before{content:"⚓ ";color:#ffe18a}
+#rankPanel h3:before{content:"✦ ";color:#ffe18a}
+.players{gap:10px}
+.player{background:linear-gradient(145deg,rgba(7,64,94,.9),rgba(2,28,52,.94));border:1px solid #5edaff;border-radius:13px;box-shadow:inset 0 0 12px #6eeaff12}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffe18a;outline-offset:3px}
+@media(min-width:900px){
+ .landing-layout{grid-template-columns:minmax(0,1fr)!important}
+ #lobby.setup-panel{max-width:1100px!important}
+ #lobby .row{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(220px,.55fr)!important;align-items:center!important;gap:14px!important}
+ #lobby .row+ .row{margin-top:14px!important}
+}
+@media(max-width:760px){
+ .cinematic-hero{height:clamp(220px,62vw,300px)!important;min-height:220px!important;padding-top:34px!important;background-position:center center!important}
+ .cinematic-hero h1{font-size:clamp(38px,10vw,58px)!important;letter-spacing:2px!important}
+ .cinematic-hero p{margin-top:10px!important;font-size:14px!important;letter-spacing:2px!important;padding:5px 16px!important}
+ #game{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "status" "players" "place" "rank" "guess" "end";gap:10px}
+ #placeArea,#rankPanel,#guessArea{padding:14px 11px}
+}
+
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel setup-panel" id="lobby"><div class="setup-title">GAME SETUP</div><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses BEGIN GAME. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: the host taps Create room once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
