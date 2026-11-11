@@ -289,6 +289,22 @@ footer{flex:0 0 auto;width:100%;margin-top:auto}
  #lobby .setup-title{min-height:68px;margin-bottom:16px!important;padding:16px 10px!important;font-size:23px!important}
 }
 
+
+/* Raise the complete setup panel over the banner's remaining metallic strip. */
+#lobby.setup-panel{
+ position:relative!important;z-index:10!important;
+ margin-top:clamp(-64px,-5vw,-38px)!important;
+ padding-top:clamp(38px,5vw,58px)!important;
+ min-height:clamp(430px,52vw,590px);
+}
+@media(max-width:560px){
+ #lobby.setup-panel{
+  margin-top:-42px!important;
+  padding-top:42px!important;
+  min-height:0;
+ }
+}
+
 </style></head><body><header class="cinematic-hero"><h1>BATTLESHIP</h1><p>SAIL OR SINK</p></header><main>
 <div class="landing-layout">
 <section class="panel setup-panel" id="lobby"><div class="setup-title">GAME SETUP</div><h2>Set up your showdown</h2><p class="rules">This is a 4-player game. Each player may lock in exactly one ship on the 3×3 ocean. After the TikTok battle, the host enters the full ranking order and presses BEGIN GAME. The lowest-ranked player is the target; every higher-ranked player gets one guess, in ranking order.</p><div class="row"><input id="name" maxlength="16" placeholder="ENTER NAME"><button id="host">CREATE ROOM</button></div><div class="row" style="margin-top:10px"><input id="room" maxlength="8" placeholder="Enter 6-character room code" autocomplete="off"><button id="join">JOIN GAME</button></div><p class="status" id="lobbyStatus" aria-live="polite">Ready to join a room.</p><p class="muted small">ONLY ONE HOST: The host taps CREATE ROOM once and shares the room code. The other three players enter that code and tap JOIN GAME. Everyone then places one ship.</p></section>
