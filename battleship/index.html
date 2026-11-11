@@ -354,3 +354,25 @@ const originalRender=render;render=function(s){originalRender(s);if(isHost&&(pha
 })();
 </script>
 </body></html>
+
+/* Match the joined-game panel to the lobby's gunmetal frame and hero overlap. */
+#game{
+ position:relative!important;z-index:10!important;box-sizing:border-box;
+ width:min(100%,1120px)!important;max-width:1120px!important;
+ margin:clamp(-44px,-3vw,-24px) auto 20px!important;
+ padding:clamp(30px,4vw,46px) clamp(20px,3.4vw,38px)!important;
+ min-height:clamp(430px,52vw,590px);
+ border:7px solid transparent!important;border-radius:24px!important;
+ background:
+  linear-gradient(145deg,rgba(5,39,70,.98),rgba(2,19,43,.98) 62%,rgba(2,31,55,.98)) padding-box,
+  linear-gradient(135deg,#eef3f6 0%,#8796a1 13%,#354451 30%,#d3dbe0 48%,#596975 66%,#e1e7eb 82%,#596671 100%) border-box!important;
+ outline:0!important;
+ box-shadow:inset 0 0 0 2px #d9e4eb55,inset 0 0 30px #0879b955,0 12px 38px #000b,0 0 18px #aab9c555!important;
+}
+@media(max-width:560px){
+ #game{
+  width:100%!important;max-width:none!important;
+  margin:-26px auto 16px!important;padding:30px 14px 24px!important;
+  min-height:0;border-width:6px!important;border-radius:19px!important;
+ }
+}
